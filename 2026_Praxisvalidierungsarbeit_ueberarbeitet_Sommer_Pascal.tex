@@ -335,7 +335,7 @@
 	{\huge \textbf{Entwicklung eines \glslink{ki}{KI}-Agenten zur Sicherung impliziten Wissens}}\\
     \vspace{0.3cm}
     %{\LARGE \textbf{{Umsetzung mit Google \glslink{adk}{ADK} und Vertex AI}}}\\
-    {\LARGE \textbf{{Anforderungsanalyse und Lösungsanalyse}}}\\
+    {\LARGE \textbf{{Vergleichende Evaluation von Ergebnisqualität und Bearbeitungsaufwand}}}\\
     
 \end{center}
 
@@ -475,7 +475,7 @@ Unterschrift \\
 \section{Einleitung}
 \label{sec:einleitung}
 
-Wissen über informelle Abläufe, persönliche Netzwerke, bewährte Vorgehensweisen und typische Fehlerquellen ist für die Kontinuität betrieblicher Prozesse von hoher Bedeutung. Ein erheblicher Teil dieses Wissens liegt jedoch nicht in formalen Dokumentationen vor, sondern ist an einzelne Beschäftigte und deren Erfahrungen gebunden. Scheiden Wissensträger:innen aus oder wechseln ihre Rolle, besteht das Risiko, dass dieses Wissen nur unvollständig an Nachfolger:innen übertragen wird. Im untersuchten Unternehmenskontext wurde deshalb ein KI-gestützter Agent entwickelt, der strukturierte Interviews durchführt, Antworten zusammenfasst, vorgegebenen Kategorien zuordnet und als bearbeitbare Dokumente bereitstellt \cite{sommer2026projekt}.
+Wissen über informelle Abläufe, persönliche Netzwerke, bewährte Vorgehensweisen und typische Fehlerquellen ist für die Kontinuität betrieblicher Prozesse von hoher Bedeutung. Ein erheblicher Teil dieses Wissens liegt jedoch nicht in formalen Dokumentationen vor, sondern ist an einzelne Beschäftigte und deren Erfahrungen gebunden. Aktuelle Forschung zum KI-gestützten Wissensmanagement verweist darauf, dass insbesondere das Ausscheiden erfahrener Beschäftigter das Risiko eines Verlusts von Erfahrungswissen erhöht \cite[S.~1--7]{nicole_ottersbock_wissensmanagement_2026}. Zugleich zeigen betriebliche Forschungsprojekte, dass digitale Lösungsansätze Wissen effizienter generieren, strukturieren und für weitere Personen bereitstellen können, sofern technische und arbeitsorganisatorische Anforderungen gemeinsam betrachtet werden \cite[S.~429--432]{schweiger_serwiss_2023}. Im untersuchten Unternehmenskontext wurde deshalb ein KI-gestützter Agent entwickelt, der strukturierte Interviews durchführt, Antworten zusammenfasst, vorgegebenen Kategorien zuordnet und als bearbeitbare Dokumente bereitstellt \cite{sommer2026projekt}.
 
 Die betriebliche Projektdokumentation weist bereits auf mögliche wirtschaftliche Vorteile hin. Für einen manuellen Wissenssicherungsprozess wurden zwei Stunden je Durchführung angesetzt, während für den agentengestützten Prozess 45 Minuten kalkuliert wurden. Bei 168 Durchführungen pro Jahr entspricht dies einer modellierten Einsparung von 210 Stunden. Diese Rechnung beantwortet allerdings noch nicht, ob die Zeitersparnis mit einem relevanten Qualitätsverlust erkauft wird. Insbesondere bei KI-generierten Zusammenfassungen genügt eine sprachlich plausible Darstellung nicht. Entscheidend ist, ob die in der Ausgangsantwort enthaltenen Informationen vollständig, korrekt und ohne unbelegte Ergänzungen wiedergegeben werden.
 
@@ -500,20 +500,19 @@ Für die Untersuchung werden folgende Arbeitshypothesen formuliert:
 \item \textbf{H3:} Die vorgegebene Dokumentstruktur und Kategorienzuordnung werden vollständig eingehalten.
 \end{itemize}
 
-Die Arbeit ist als eingebettete Einzelfallstudie angelegt. Die quantitative Aussagekraft ist dadurch begrenzt
+Die Arbeit ist als eingebettete Einzelfallstudie angelegt. Die quantitative Aussagekraft ist dadurch begrenzt.
 Zugleich ermöglicht der Ansatz eine nachvollziehbare Prüfung des konkret entwickelten Artefakts im betrieblichen Kontext.
 
-\newpage
 % ============================== SEITE 2 =============================
 \section{Theoretischer Bezugsrahmen}
 
 \subsection{Implizites Wissen und Wissensexternalisierung}
 
-Polanyi beschreibt Wissen als teilweise nicht vollständig verbalisierbar: Menschen können in praktischen Situationen mehr wissen, als sie unmittelbar ausdrücken können \cite{polanyi1966}. Implizites Wissen zeigt sich etwa in Routinen, Erfahrungsurteilen, persönlichen Kontakten oder situativen Problemlösungsstrategien. Es ist häufig eng mit einer Person und einem konkreten Handlungskontext verbunden. Explizites Wissen liegt dagegen in einer kommunizierbaren und speicherbaren Form vor, beispielsweise als Prozessbeschreibung, Checkliste oder Wissensdokument.
+Erfahrungswissen ist häufig an konkrete Personen, Arbeitsabläufe und betriebliche Kontexte gebunden. Im Forschungsprojekt IDboard wird das Triadengespräch als narratives Verfahren zum Transfer personengebundenen, erfahrungsbasierten Wissens beschrieben. Eine erfahrene Person schildert relevante Lern- und Erfahrungssituationen einschließlich ihres Entstehungskontexts. Eine wissensnehmende Person stellt Nach- und Verständnisfragen, während eine moderierende Person vermeintlich selbstverständliche Aspekte hinterfragt und detaillierte Erläuterungen anregt \cite[S.~132--135]{sander_onboarding_2023}. Für die betriebliche Wissenssicherung ist daran besonders relevant, dass nicht nur isolierte Sachinformationen, sondern auch Erfahrungen, Begründungen und situative Vorgehensweisen erhoben werden.
 
-Für Organisationen besteht eine zentrale Herausforderung darin, relevante Teile des impliziten Wissens so zu externalisieren, dass andere Personen darauf zugreifen können. Nonaka ordnet diesen Übergang als Bestandteil organisationaler Wissensentstehung ein und betont die fortlaufende Wechselwirkung zwischen implizitem und explizitem Wissen \cite{nonaka1994}. Ein Interview kann die Externalisierung unterstützen, weil gezielte Fragen die befragte Person dazu anregen, Handlungen, Abhängigkeiten und Erfahrungen zu reflektieren. Das Interview erzeugt jedoch nicht automatisch ein nutzbares Wissensprodukt. Die Antworten müssen ausgewählt, verdichtet und in einer Struktur abgelegt werden, die für spätere Nutzer:innen verständlich bleibt.
+Für Organisationen besteht daher die Herausforderung, relevante Bestandteile dieses personengebundenen Wissens so zu explizieren, dass sie für andere Beschäftigte zugänglich und wiederverwendbar werden. Das Triadengespräch zeigt exemplarisch, dass Erzählungen, Nachfragen und die anschließende Ergebnissicherung die Explikation impliziten Wissens anregen können. Als mögliche Formen der Weiterverwendung werden unter anderem Transkriptionen, Lessons Learned und textliche Zusammenfassungen genannt \cite[S.~134--136]{sander_onboarding_2023}. Ein Interview kann diesen Prozess unterstützen, indem gezielte Fragen die befragte Person dazu veranlassen, Handlungen, Abhängigkeiten, Erfahrungen und Bewertungen zu reflektieren. Das Interview erzeugt jedoch nicht automatisch ein nutzbares Wissensprodukt. Die Antworten müssen ausgewählt, verdichtet und in einer Struktur abgelegt werden, die für spätere Nutzer:innen verständlich bleibt.
 
-Der entwickelte Agent übernimmt genau diese nachgelagerte Transformationsleistung. Er führt durch einen vorgegebenen Fragenkatalog, speichert Rohantworten und erzeugt zu jeder Antwort eine Kurzfassung. Die Kurzfassungen werden den Kategorien „Erfahrungen und Empfehlungen“, „Prozesse und Arbeitsschritte“ sowie „Sonstiges“ zugeordnet. Der fachliche Nutzen hängt damit nicht nur von der Dialogführung, sondern wesentlich von der Qualität der Zusammenfassung ab.
+Der entwickelte Agent übernimmt genau diese nachgelagerte Transformationsleistung. Er führt durch einen vorgegebenen Fragenkatalog, speichert Rohantworten und erzeugt zu jeder Antwort eine Kurzfassung. Die Kurzfassungen werden den Kategorien „Erfahrungen und Empfehlungen“, „Prozesse und Arbeitsschritte“ sowie „Sonstiges“ zugeordnet. Damit greift das Artefakt einen in aktuellen Digitalisierungsprojekten beschriebenen Anwendungsfall auf: Wissen soll mit vertretbarem Aufwand generiert, strukturiert, dauerhaft verfügbar gemacht und in späteren Arbeitssituationen wiederverwendet werden \cite[S.~429--432, 438--440]{schweiger_serwiss_2023}. Der fachliche Nutzen hängt folglich nicht nur von der Dialogführung, sondern wesentlich von der Qualität der Zusammenfassung ab.
 
 \subsection{Qualität KI-generierter Zusammenfassungen}
 
@@ -532,7 +531,6 @@ Die Auswahl der Qualitätsmerkmale orientiert sich zusätzlich am Grundgedanken 
 
 Diese Dimensionen ermöglichen eine betriebsnahe Bewertung. Sie ersetzen keine umfassende Softwarequalitätsprüfung, adressieren aber unmittelbar das Risiko, dass ein formal korrektes Dokument fachlich unzuverlässig ist.
 
-\newpage
 % ============================== SEITE 3 =============================
 \section{Methodik}
 
@@ -540,11 +538,11 @@ Diese Dimensionen ermöglichen eine betriebsnahe Bewertung. Sie ersetzen keine u
 
 Die Untersuchung folgt einem vergleichenden, artefaktzentrierten Fallstudiendesign. Gegenstand ist der im IHK-Praxisprojekt entwickelte Wissenssicherungsagent. Als Datenbasis dienen ein fachlich realitätsnaher Interviewdurchlauf zum Themenfeld „LMLV Toolingservice“ und zwei mit identischen Eingaben erzeugte Ergebnisdateien. Diese Dateien wurden bereits im Rahmen des Projekts dokumentiert und durch die Fachabteilung grundsätzlich als nutzbare Grundlage der Wissenssicherung eingestuft \cite{sommer2026projekt}. Es werden keine nachträglich erfundenen Interviews als empirische Erhebung ausgegeben. Die Evaluation nutzt vorhandene Projektdaten und einen im Nachgang konstruierten Referenzstandard.
 
-Das Forschungsdesign kombiniert eine Qualitätsanalyse mit einer modellbasierten Aufwandsanalyse. Die Qualitätsanalyse untersucht die tatsächlich erzeugten Ausgaben. Die Aufwandsanalyse greift auf die im Praxisprojekt dokumentierten Prozesszeiten zurück. Diese Werte wurden dort für die Wirtschaftlichkeitsbetrachtung angesetzt; sie stellen keine kontrollierte Zeitmessung mit mehreren Versuchspersonen dar. Diese Trennung ist für die Interpretation relevant: Aussagen zur Ergebnisqualität beziehen sich auf konkrete Artefakte, Aussagen zur Zeitersparnis auf ein betriebliches Prozessmodell.
+Das Forschungsdesign kombiniert eine Qualitätsanalyse mit einer modellbasierten Aufwandsanalyse. Die Qualitätsanalyse untersucht die tatsächlich erzeugten Ausgaben. Die Aufwandsanalyse greift auf die im Praxisprojekt dokumentierten Prozesszeiten zurück. Diese Werte wurden dort für die Wirtschaftlichkeitsbetrachtung angesetztund stellen keine kontrollierte Zeitmessung mit mehreren Versuchspersonen dar. Diese Trennung ist für die Interpretation relevant: Aussagen zur Ergebnisqualität beziehen sich auf konkrete Artefakte, Aussagen zur Zeitersparnis auf ein betriebliches Prozessmodell.
 
 \subsection{Referenzstandard und Analyseeinheit}
 
-Die Analyseeinheit ist eine fachliche Informationseinheit. Sie umfasst jeweils eine eigenständig nutzbare Aussage, beispielsweise einen Ansprechpartner, eine Fehlerursache, einen Dokumentationsort oder eine zukünftige Entwicklung. Aus dem Fragenkatalog und den zugrunde liegenden Antworten wurden 13 erwartete Informationseinheiten abgeleitet. Diese entsprechen den 13 projektspezifischen Fragen des Interviewleitfadens. Auch Negativaussagen wie „keine externen Stakeholder“ oder „keine undokumentierten Regeltätigkeiten“ werden als relevante Information gewertet, weil sie Unsicherheit reduzieren und eine spätere erneute Suche vermeiden können.
+Die Analyseeinheit ist eine fachliche Informationseinheit. Sie umfasst jeweils eine eigenständig nutzbare Aussage, beispielsweise einen Ansprechpartner, eine Fehlerursache, einen Dokumentationsort oder eine zukünftige Entwicklung. Aus dem Fragenkatalog und den zugrunde liegenden Antworten wurden 13 erwartete Informationseinheiten abgeleitet. Diese entsprechen den 13 projektspezifischen Fragen des Interviewleitfadens. Auch Negativaussagen wie „keine externen Stakeholder“ oder „keine undokumentierten Regeltätigkeiten“ werden als relevante Information gewertet, weil sie Unsicherheit reduzieren und eine spätere erneute Suche vermeiden können. Der Fragenkatalog adressiert damit Arbeitsprozesse, Rollenzuordnungen, Kommunikationsstrukturen, Wissensquellen, Erfahrungen und individuelle Einschätzungen. Ein vergleichbares Vorgehen wurde im Projekt NedZ eingesetzt: Dort dienten teilstandardisierte Interviews dazu, Arbeitsprozesse, Rollen, Kommunikationsstrukturen, Unternehmensziele und individuelle Anforderungen als Grundlage einer digitalen Lösung zu erfassen \cite[S.~10--11]{boehme_nedz_2023}.
 
 Für jede Informationseinheit wurden drei Sollmerkmale festgelegt:
 
@@ -616,7 +614,7 @@ Die Bewertung wurde durch den Verfasser vorgenommen. Um die Nachvollziehbarkeit 
 
 \subsection{Ethische und datenschutzbezogene Einordnung}
 
-Für die Evaluation wurden keine neuen personenbezogenen Interviews durchgeführt. Die dargestellten Inhalte sind auf die fachliche Ebene reduziert; Namen einzelner Beschäftigter werden nicht verwendet. Interne System- und Rollenbezeichnungen werden nur in dem Umfang genannt, der bereits Bestandteil der gesperrten Projektdokumentation ist. Für einen späteren Produktivbetrieb wäre darüber hinaus zu klären, welche Kategorien personenbezogener oder vertraulicher Informationen verarbeitet werden dürfen, wie Zugriffe protokolliert werden und wann eine menschliche Freigabe erforderlich ist. Diese organisatorischen Fragen sind nicht Gegenstand der Kennzahlen, beeinflussen jedoch die tatsächliche Einsatzfähigkeit.
+Für die Evaluation wurden keine neuen personenbezogenen Interviews durchgeführt. Die dargestellten Inhalte sind auf die fachliche Ebene reduziert. Namen einzelner Beschäftigter werden nicht verwendet. Interne System- und Rollenbezeichnungen werden nur in dem Umfang genannt, der bereits Bestandteil der gesperrten Projektdokumentation ist. Für einen späteren Produktivbetrieb wäre darüber hinaus zu klären, welche Kategorien personenbezogener oder vertraulicher Informationen verarbeitet werden dürfen, wie Zugriffe protokolliert werden und wann eine menschliche Freigabe erforderlich ist. Diese organisatorischen Fragen sind nicht Gegenstand der Kennzahlen, beeinflussen jedoch die tatsächliche Einsatzfähigkeit.
 
 Die Untersuchung wurde nicht verblindet durchgeführt. Der Verfasser war zugleich Entwickler des Artefakts und Bewerter der Ausgaben. Daraus entsteht ein potenzieller Bestätigungsbias. Die Befunde werden deshalb als explorativ und nicht als unabhängiger Wirksamkeitsnachweis eingeordnet.
 
@@ -675,7 +673,7 @@ Semantische Konsistenz & \multicolumn{2}{c}{12 von 13 Einheiten vollständig gle
 \label{tab:qualitaet}
 \end{table}
 
-Die Konsistenzbewertung berücksichtigt, dass die Formulierungen nicht wortgleich sein müssen. Zwölf Informationseinheiten waren in beiden Durchläufen fachlich vollständig gleichwertig. Bei der Risikoinformation war der Kerninhalt ebenfalls identisch; der erste Durchlauf enthielt jedoch die zusätzliche Negativfeststellung. Unter der konservativen Regel ergibt sich eine Konsistenz von \pct{92{,}3}. Damit werden H2 und H3 innerhalb des untersuchten Falls erfüllt.
+Die Konsistenzbewertung berücksichtigt, dass die Formulierungen nicht wortgleich sein müssen. Zwölf Informationseinheiten waren in beiden Durchläufen fachlich vollständig gleichwertig. Bei der Risikoinformation war der Kerninhalt ebenfalls identisch. Der erste Durchlauf enthielt jedoch die zusätzliche Negativfeststellung. Unter der konservativen Regel ergibt sich eine Konsistenz von \pct{92{,}3}. Damit werden H2 und H3 innerhalb des untersuchten Falls erfüllt.
 
 % ============================== SEITE 6 =============================
 \section{Interpretation und Sensitivitätsanalyse}
@@ -690,7 +688,7 @@ Die hohe Strukturkonformität ist teilweise durch die Systemarchitektur erklärb
 
 \subsection{Sensitivität des Zeitvorteils}
 
-Da die 45 Minuten aus einer Prozesskalkulation stammen, wird geprüft, wie robust der Zeitvorteil bei längeren Durchführungen ist. Tabelle~\ref{tab:sensitivitaet} zeigt drei Szenarien. Selbst wenn der agentengestützte Prozess 60 Minuten benötigt, beträgt die Reduktion noch \pct{50}. Bei 90 Minuten sinkt sie auf \pct{25}; es verbleiben jedoch 84 Stunden jährliche Einsparung.
+Da die 45 Minuten aus einer Prozesskalkulation stammen, wird geprüft, wie robust der Zeitvorteil bei längeren Durchführungen ist. Tabelle~\ref{tab:sensitivitaet} zeigt drei Szenarien. Selbst wenn der agentengestützte Prozess 60 Minuten benötigt, beträgt die Reduktion noch \pct{50}. Bei 90 Minuten sinkt sie auf \pct{25}, es verbleiben jedoch 84 Stunden jährliche Einsparung.
 
 \begin{table}[H]
 \centering
@@ -712,21 +710,20 @@ Der erwartete Nutzen hängt damit stärker von der manuellen Nachbearbeitungszei
 
 Die modellierten 210 Stunden dürfen nicht unmittelbar als frei verfügbare Arbeitskapazität interpretiert werden. Ein Teil des Zeitgewinns verteilt sich auf viele einzelne Vorgänge und kann durch Koordination oder Kontextwechsel gebunden bleiben. Dennoch reduziert der Agent einen wiederkehrenden administrativen Aufwand und standardisiert zugleich das Ergebnisformat. Der Nutzen besteht somit aus einer Kombination von Zeitgewinn und Prozessqualität.
 
-\newpage
 % ============================== SEITE 7 =============================
 \section{Diskussion}
 
 \subsection{Beantwortung der Forschungsfrage}
 
-Innerhalb des untersuchten Falls kann der KI-Agent den modellierten Bearbeitungsaufwand deutlich reduzieren, ohne dass in den ausgewerteten Ergebnisdateien ein wesentlicher Qualitätsverlust erkennbar ist. Die angenommene Zeitersparnis beträgt \pct{62{,}5}. Die Vollständigkeit und Strukturkonformität erreichen jeweils \pct{100}; die konservativ bewertete Präzision liegt im Mittel bei \pct{96{,}4}. Die wiederholten Durchläufe sind semantisch weitgehend stabil. Die Forschungsfrage ist daher für den MVP grundsätzlich positiv zu beantworten. Die Formulierung „grundsätzlich“ ist erforderlich, weil die Datengrundlage keinen allgemeinen Wirksamkeitsnachweis für sämtliche Offboarding-Situationen erlaubt.
+Innerhalb des untersuchten Falls kann der KI-Agent den modellierten Bearbeitungsaufwand deutlich reduzieren, ohne dass in den ausgewerteten Ergebnisdateien ein wesentlicher Qualitätsverlust erkennbar ist. Die angenommene Zeitersparnis beträgt \pct{62{,}5}. Die Vollständigkeit und Strukturkonformität erreichen jeweils \pct{100}. Die konservativ bewertete Präzision liegt im Mittel bei \pct{96{,}4}. Die wiederholten Durchläufe sind semantisch weitgehend stabil. Die Forschungsfrage ist daher für den MVP grundsätzlich positiv zu beantworten. Die Formulierung „grundsätzlich“ ist erforderlich, weil die Datengrundlage keinen allgemeinen Wirksamkeitsnachweis für sämtliche Offboarding-Situationen erlaubt.
 
-Die Ergebnisse stützen die Annahme, dass ein regelgebundener KI-Agent besonders bei standardisierbaren Nachbereitungsschritten einen Nutzen bietet. Das Interview selbst bleibt ein sozialer und inhaltlicher Prozess. Die interviewte Person muss bereit und in der Lage sein, relevante Erfahrungen zu artikulieren. Der Agent kann nicht erkennen, welches Wissen nicht genannt wurde, wenn keine Rückfrage- oder Validierungslogik greift. Im Projekt war eine systematische Prüfung zu knapper oder unklarer Antworten noch nicht vollständig umgesetzt. Die gemessene Vollständigkeit bezieht sich daher auf die Übertragung vorhandener Antworten, nicht auf die vollständige Erhebung des tatsächlich vorhandenen impliziten Wissens.
+Die Ergebnisse stützen die Annahme, dass ein regelgebundener KI-Agent besonders bei standardisierbaren Nachbereitungsschritten einen Nutzen bietet. Das Interview selbst bleibt ein sozialer und inhaltlicher Prozess. Die interviewte Person muss bereit und in der Lage sein, relevante Erfahrungen zu artikulieren. Der Agent kann nicht erkennen, welches Wissen nicht genannt wurde, wenn keine Rückfrage- oder Validierungslogik greift. Im Projekt war eine systematische Prüfung zu knapper oder unklarer Antworten noch nicht vollständig umgesetzt. Die gemessene Vollständigkeit bezieht sich daher auf die Übertragung vorhandener Antworten, nicht auf die vollständige Erhebung des tatsächlich vorhandenen impliziten Wissens. Dies entspricht der Einordnung digital unterstützter Onboarding- und Transferprozesse, nach der digitale Werkzeuge menschliche und soziale Interaktionen unterstützen, aber nicht vollständig ersetzen sollen \cite[S.~143--145]{sander_onboarding_2023}.
 
 \subsection{Limitationen und Validitätsrisiken}
 
 Die interne Validität wird vor allem durch die Rollenüberschneidung beeinträchtigt: Entwickler und Bewerter sind identisch. Ein unabhängiges Doppelrating hätte die Zuverlässigkeit der Qualitätsurteile erhöht. Zudem wurde nur ein fachlicher Fall mit zwei Wiederholungen untersucht. Die Antworten waren überwiegend klar und enthielten wenig widersprüchliche oder mehrdeutige Inhalte. Bei langen, emotionalen, unsortierten oder fachlich widersprüchlichen Aussagen können andere Fehlerbilder auftreten.
 
-Die Aufwandsanalyse basiert auf Prozessannahmen und nicht auf einer kontrollierten Beobachtung mehrerer manueller und agentengestützter Durchführungen. Unterschiede zwischen Interviewer:innen, Rollenkomplexität, Anzahl der Projekte und Umfang der Antworten sind daher nicht abgebildet. Auch die technische Laufzeit des Modells wurde nicht separat von der Interaktions- und Prüfzeit erfasst. Die externe Validität ist folglich eingeschränkt; die Ergebnisse lassen sich nicht ohne weitere Prüfung auf andere Abteilungen oder Unternehmen übertragen.
+Die Aufwandsanalyse basiert auf Prozessannahmen und nicht auf einer kontrollierten Beobachtung mehrerer manueller und agentengestützter Durchführungen. Unterschiede zwischen Interviewer:innen, Rollenkomplexität, Anzahl der Projekte und Umfang der Antworten sind daher nicht abgebildet. Auch die technische Laufzeit des Modells wurde nicht separat von der Interaktions- und Prüfzeit erfasst. Die externe Validität ist folglich eingeschränkt. Die Ergebnisse lassen sich nicht ohne weitere Prüfung auf andere Abteilungen oder Unternehmen übertragen.
 
 Ein weiteres Risiko betrifft die Referenzbildung. Die 13 Informationseinheiten orientieren sich am bestehenden Fragenkatalog. Dadurch wird gut geprüft, ob der Agent das vorgesehene Schema erfüllt. Weniger sichtbar bleibt, ob unerwartete, aber wertvolle Informationen außerhalb der Kategorien angemessen aufgenommen werden. Ein zu starres Format kann zwar Vergleichbarkeit schaffen, zugleich aber die Offenheit des Wissenstransfers begrenzen.
 
@@ -734,9 +731,8 @@ Ein weiteres Risiko betrifft die Referenzbildung. Die 13 Informationseinheiten o
 
 Vor einer Produktivsetzung sollte ein begrenzter Pilot mit mindestens zehn bis zwanzig Wissenssicherungen durchgeführt werden. Für jeden Fall sollten Interviewzeit, automatische Verarbeitung, menschliche Prüfung und Nachkorrektur getrennt gemessen werden. Die Qualität sollte durch zwei fachkundige Personen unabhängig bewertet werden. Unstimmigkeiten können über ein einfaches Konsensverfahren geklärt werden.
 
-Weiterhin sollte die Anwendung eine verpflichtende Human-in-the-Loop-Freigabe vorsehen. In der Ergebnisdatei sollten Kurzfassung und zugehörige Rohantwort eindeutig miteinander verknüpft sein. Markierungen für unsichere, sehr kurze oder widersprüchliche Antworten würden die Prüfung erleichtern. Für sensible Inhalte sind ein Rollen- und Berechtigungskonzept, definierte Löschfristen, Protokollierung und eine klare Verantwortlichkeit für die spätere Pflege der Dokumente erforderlich. Ohne diese organisatorischen Maßnahmen würde der Agent zwar Dokumente erzeugen, aber das grundlegende Problem veralteter oder unklar verantworteter Wissensbestände nicht vollständig lösen.
+Weiterhin sollte die Anwendung eine verpflichtende Human-in-the-Loop-Freigabe vorsehen. Ein produktiver Einsatz ist nicht allein als technische Einführung zu behandeln. Der BMBF-Sammelband zur Digitalisierung der Arbeitswelt beschreibt digitale Arbeitssysteme ausdrücklich als Zusammenspiel von Mensch, Technik und Organisation und hebt die frühzeitige Beteiligung der Beschäftigten bei Gestaltung und Einführung hervor \cite[S.~4--6, 10--11]{boehme_nedz_2023}. Für digitale Onboarding-Instrumente wird ergänzend eine Balance zwischen technischer Unterstützung und zwischenmenschlicher Interaktion gefordert \cite[S.~143--145]{sander_onboarding_2023}. Auch aktuelle Forschung zu KI-basiertem Wissensmanagement empfiehlt eine transparente, partizipative und kontinuierlich evaluierte Einführung \cite[S.~77--110]{nicole_ottersbock_wissensmanagement_2026}. In der Ergebnisdatei sollten Kurzfassung und zugehörige Rohantwort eindeutig miteinander verknüpft sein. Markierungen für unsichere, sehr kurze oder widersprüchliche Antworten würden die Prüfung erleichtern. Für sensible Inhalte sind ein Rollen- und Berechtigungskonzept, definierte Löschfristen, Protokollierung und eine klare Verantwortlichkeit für die spätere Pflege der Dokumente erforderlich. Ohne diese organisatorischen Maßnahmen würde der Agent zwar Dokumente erzeugen, aber das grundlegende Problem veralteter oder unklar verantworteter Wissensbestände nicht vollständig lösen.
 
-\newpage
 % ============================== SEITE 8 =============================
 \section{Fazit und Ausblick}
 

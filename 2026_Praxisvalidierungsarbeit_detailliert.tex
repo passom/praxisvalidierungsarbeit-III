@@ -1,0 +1,612 @@
+\documentclass[
+  10pt,
+  ngerman,
+  a4paper,
+  toc=graduated,
+  numbers=noenddot,
+  headings=standardclasses
+]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tgheros}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{babel}
+\usepackage[top=2cm,right=2.3cm,bottom=2cm,left=2.3cm,footskip=0.7cm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage[automark]{scrlayer-scrpage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.32\baselineskip plus 0.5pt minus 0.5pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+
+\definecolor{ihkblue}{RGB}{28,54,97}
+\definecolor{tablehead}{RGB}{32,58,102}
+\definecolor{tablelight}{RGB}{231,236,244}
+\definecolor{tableline}{RGB}{75,84,96}
+\arrayrulecolor{tableline}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+\newcommand{\pct}[1]{#1\,\%}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+\ofoot{\pagemark}
+
+\RedeclareSectionCommand[font=\normalfont\bfseries]{section}
+\RedeclareSectionCommand[font=\normalfont\bfseries]{subsection}
+\RedeclareSectionCommand[font=\normalfont\bfseries]{subsubsection}
+
+\begin{document}
+
+% ------------------------------------------------------------
+% Titelseite
+% ------------------------------------------------------------
+\hypersetup{pageanchor=false}
+\thispagestyle{empty}
+
+\vspace*{1.5cm}
+\begin{center}
+  {\Large Praxisvalidierungsarbeit III}\\[2.8cm]
+  {\huge\bfseries Entwicklung eines KI-Agenten zur Sicherung impliziten Wissens}\\[0.5cm]
+  {\LARGE\bfseries Vergleichende Evaluation von Ergebnisqualität und Bearbeitungsaufwand}\\[2.3cm]
+
+  Abgabe: Hamburg, den 11.08.2026\\[2.5\baselineskip]
+  {\bfseries\textcolor{ihkblue}{Matrikelnummer: 236913}}\\[1.5\baselineskip]
+  Bachelor of Science (B.Sc.)\\[3\baselineskip]
+
+  SIGNAL IDUNA Lebensversicherung a. G.\\
+  Neue Rabenstr. 15\\
+  20354 Hamburg\\[2.5\baselineskip]
+
+  Erstbetreuung\\
+  Prof. Dr. Henning Klaffke\\[2\baselineskip]
+
+  Zweitbetreuung\\
+  Prof. Dr. Robert Mertens
+\end{center}
+
+% ------------------------------------------------------------
+% Verzeichnisse und Erklärungen
+% ------------------------------------------------------------
+\newpage
+\hypersetup{pageanchor=true}
+\pagenumbering{Roman}
+\tableofcontents
+
+\newpage
+\section*{Sperrvermerk}
+\addcontentsline{toc}{section}{Sperrvermerk}
+Die vorliegende Praxisvalidierungsarbeit enthält vertrauliche interne Informationen der SIGNAL IDUNA Gruppe. Sie ist ausschließlich zur Bewertung im Rahmen des Studiums an der Beruflichen Hochschule Hamburg bestimmt. Eine Veröffentlichung, Vervielfältigung oder Weitergabe der Arbeit oder einzelner Inhalte an Dritte ist ohne ausdrückliche Zustimmung der SIGNAL IDUNA Gruppe nicht gestattet.
+
+\vspace{2cm}
+\begin{tabular}{@{}p{6cm}p{6cm}@{}}
+\hrulefill & \hrulefill\\
+Hamburg, den 11.08.2026 & Matrikelnummer 236913
+\end{tabular}
+
+\vspace{2cm}
+\hrulefill\\
+Unterschrift
+
+\newpage
+\section*{Selbstständigkeitserklärung}
+\addcontentsline{toc}{section}{Selbstständigkeitserklärung}
+Hiermit erkläre ich an Eides statt, dass ich die vorliegende wissenschaftliche Arbeit selbstständig verfasst und keine anderen als die angegebenen Hilfsmittel benutzt habe. Quellen, die im Wortlaut oder dem Sinn nach verwendet wurden, sind kenntlich gemacht.
+
+Werkzeuge auf Basis künstlicher Intelligenz wurden unterstützend zur Strukturierung, sprachlichen Überarbeitung und Formulierung eingesetzt. Die inhaltliche Verantwortung, fachliche Prüfung und finale Bearbeitung der Inhalte liegen vollständig bei mir. In dieser Arbeit verwendete synthetische Testdaten und modellierte Annahmen werden ausdrücklich als solche gekennzeichnet.
+
+\vspace{2cm}
+\begin{tabular}{@{}p{6cm}p{6cm}@{}}
+\hrulefill & \hrulefill\\
+Hamburg, den 11.08.2026 & Matrikelnummer 236913
+\end{tabular}
+
+\vspace{2cm}
+\hrulefill\\
+Unterschrift
+
+\newpage
+\listoftables
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 1
+% ------------------------------------------------------------
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Einleitung und Forschungsfrage}
+
+Beim Ausscheiden oder internen Wechsel erfahrener Beschäftigter besteht das Risiko, dass informelle Abläufe, persönliche Netzwerke, Fehlererfahrungen und bewährte Vorgehensweisen nicht vollständig übergeben werden. Neuere Forschung zum KI-gestützten Wissensmanagement beschreibt dieses Erfahrungswissen als schwer dokumentierbar und untersucht digitale Assistenzsysteme, die Wissen strukturiert erfassen und für andere Beschäftigte verfügbar machen \cite[S.~1--7]{ottersboeck_urban_2026}. Betriebliche Fallstudien zeigen zugleich, dass eine digitale Wissenssicherung nicht nur technisch, sondern als Zusammenspiel von Mensch, Technik und Organisation gestaltet werden muss \cite[S.~23--28]{boehme_nedz_2023}.
+
+Im zugrunde liegenden IHK-Praxisprojekt wurde ein KI-Agent entwickelt, der einen festgelegten Interviewleitfaden durchläuft, Rohantworten speichert, Kurzfassungen erzeugt, diese vorgegebenen Kategorien und Keywords zuordnet und DOCX-Ergebnisdateien bereitstellt \cite{sommer2026projekt}. Die Projektdokumentation kalkuliert für einen manuellen Wissenssicherungsprozess 120 Minuten und für den agentengestützten Ablauf 45 Minuten. Diese Wirtschaftlichkeitsannahme beantwortet jedoch nicht, ob die Zeitersparnis mit inhaltlichen Fehlern, Auslassungen oder instabilen Ergebnissen verbunden ist.
+
+Die vorliegende Arbeit untersucht deshalb folgende Forschungsfrage:
+
+\begin{quote}
+\textbf{Inwieweit reduziert der entwickelte KI-Agent den Bearbeitungsaufwand bei der Wissenssicherung, ohne Vollständigkeit, faktische Korrektheit und strukturelle Nutzbarkeit der Ergebnisdokumente wesentlich zu beeinträchtigen?}
+\end{quote}
+
+Daraus werden vier prüfbare Hypothesen abgeleitet:
+
+\begin{itemize}
+  \item \textbf{H1:} Der modellierte Gesamtaufwand sinkt um mindestens \pct{50}.
+  \item \textbf{H2:} Mindestens \pct{95} der definierten Referenzfakten werden korrekt wiedergegeben.
+  \item \textbf{H3:} Die Präzision beträgt mindestens \pct{95}; schwerwiegende oder kritische Falschaussagen treten nicht auf.
+  \item \textbf{H4:} Kategorie, Keyword und Dokumentbereich werden vollständig korrekt übernommen; die strenge Konsistenz zwischen zwei Wiederholungen beträgt mindestens \pct{90}.
+\end{itemize}
+
+Die Untersuchung ist als formative Einzelfallevaluation angelegt. Sie bewertet zwei im Praxisprojekt tatsächlich erzeugte Ergebnisdateien. Der hierfür verwendete Referenzkatalog wurde retrospektiv aus dem dokumentierten Testfall rekonstruiert. Er ist damit kein unabhängig erhobener Goldstandard, ermöglicht aber eine transparente und reproduzierbare Prüfung der vorhandenen Artefakte.
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 2
+% ------------------------------------------------------------
+\newpage
+\section{Forschungsstand und Bewertungsmodell}
+
+\subsection{Wissenssicherung als strukturierter Transferprozess}
+
+Narrative und teilstandardisierte Gespräche eignen sich zur Erhebung personengebundenen Erfahrungswissens, weil sie neben Sachinformationen auch Begründungen, Beziehungen und situative Vorgehensweisen sichtbar machen. Im Projekt IDboard wird ein Triadengespräch beschrieben, bei dem Nach- und Verständnisfragen sowie eine anschließende Ergebnissicherung die Explikation von Erfahrungswissen unterstützen \cite[S.~132--136]{sander_onboarding_2023}. Im Projekt NedZ wurden teilstandardisierte Interviews eingesetzt, um Arbeitsprozesse, Rollenzuordnungen, Kommunikationsstrukturen und individuelle Anforderungen als Grundlage einer digitalen Lösung zu erfassen \cite[S.~10--11]{boehme_nedz_2023}. Der Wissenssicherungsagent übernimmt dabei nicht den gesamten sozialen Transferprozess, sondern automatisiert vor allem die strukturierte Nachbereitung.
+
+Digitale Wissenslösungen sollen Wissen effizient generieren, strukturieren und später wieder auffindbar machen \cite[S.~429--440]{schweiger_serwiss_2023}. Praxisbeispiele zu KI-basierten Wissensplattformen nennen automatisierte Nachfragen, kontextbezogene Dokumentation und iterative Pilotläufe als zentrale Elemente \cite[S.~129--141]{volkens_wissensmanagement_2026}. Für den untersuchten Minimum-Viable-Product-Stand ist die automatische Rückfragelogik jedoch noch nicht vollständig umgesetzt. Die Evaluation konzentriert sich daher auf die Qualität der Übertragung bereits gegebener Antworten in strukturierte Ergebnisdokumente.
+
+\subsection{Qualitätsdimensionen}
+
+Bei abstraktiven Zusammenfassungen können Informationen ausgelassen, verändert oder unbelegt ergänzt werden. SummEval trennt deshalb unter anderem Relevanz, Konsistenz, Kohärenz und sprachliche Qualität \cite{fabbri2021}. Für betriebliche Wissensdokumente ist insbesondere die faktische Konsistenz gegenüber dem Ausgangstext kritisch; reine Textähnlichkeitsmaße reichen dafür nicht aus \cite{kryscinski2020}. Entsprechend wird eine manuelle, faktenbasierte Bewertung verwendet.
+
+Die Dimensionen in Tabelle~\ref{tab:qualitaetsmodell} orientieren sich am Grundgedanken der ISO/IEC 25010, Qualitätsmerkmale explizit zu definieren und messbar zu operationalisieren \cite{iso25010}. Die Gewichtung wurde vor der Auswertung festgelegt. Vollständigkeit und Präzision erhalten das höchste Gewicht, weil fehlende oder erfundene Inhalte für die Wissensübergabe schwerer wiegen als rein sprachliche Unterschiede.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{2.8cm}Y C{1.6cm}L{2.5cm}}
+\toprule
+\rowcolor{tablelight}
+\textbf{Dimension} & \textbf{Messung} & \textbf{Gewicht} & \textbf{Akzeptanz}\\
+\midrule
+Vollständigkeit & korrekt übernommene Referenzfakten im Verhältnis zu allen Referenzfakten & 35\% & $\geq 95\%$\\
+Präzision & durch den Referenzkatalog gedeckte Aussagen im Verhältnis zu allen ausgegebenen Aussagen & 30\% & $\geq 95\%$\\
+Strukturkonformität & korrekte Kategorie, korrektes Keyword und richtiger Dokumentbereich & 20\% & $100\%$\\
+Konsistenz & fachlich gleichwertige Ergebniszellen bei identischer Eingabe & 15\% & $\geq 90\%$\\
+Fehlerschwere & höchste festgestellte Abweichung nach vierstufiger Skala & -- & keine schwere/kritische Abweichung\\
+\bottomrule
+\end{tabularx}
+\caption{Qualitätsmodell und Akzeptanzgrenzen}
+\label{tab:qualitaetsmodell}
+\end{table}
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 3
+% ------------------------------------------------------------
+\newpage
+\section{Datenbasis und Referenzstandard}
+
+\subsection{Evidenzkette}
+
+Die Evaluation stützt sich auf vier klar getrennte Datenobjekte. Dadurch wird vermieden, Projektannahmen, tatsächliche Ausgaben und nachträglich konstruierte Bewertungsregeln miteinander zu vermischen.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{1.2cm}L{3.3cm}Y L{3.0cm}}
+\toprule
+\rowcolor{tablelight}
+\textbf{ID} & \textbf{Datenobjekt} & \textbf{Verwendung} & \textbf{Status}\\
+\midrule
+D1 & Fragenkatalog Teil 2 & vorgesehene Kategorie, Keyword und Erkenntnisinteresse & im Praxisprojekt dokumentiert\\
+D2 & Ergebnisdatei Durchlauf 1 & erste reale Agentenausgabe mit 13 Ergebniszellen & im Praxisprojekt erzeugt\\
+D3 & Ergebnisdatei Durchlauf 2 & zweite reale Agentenausgabe bei identischem Testfall & im Praxisprojekt erzeugt\\
+D4 & Referenzkatalog R01--R13 & atomisierte Soll-Aussagen zur manuellen Bewertung & retrospektiv und synthetisch rekonstruiert\\
+D5 & Zeitmodell & Vergleich von 120 und 45 Minuten sowie Sensitivitätsanalyse & modellierte Projektannahme\\
+\bottomrule
+\end{tabularx}
+\caption{Datenbasis und Status der verwendeten Evidenz}
+\label{tab:evidenzkette}
+\end{table}
+
+\subsection{Konstruktion des Referenzkatalogs}
+
+Der Referenzkatalog umfasst 13 Informationseinheiten, die den 13 projektspezifischen Interviewfragen entsprechen. Jede Einheit wurde in atomare Fakten zerlegt. Ein Fakt ist eine Aussage, deren Weglassen oder Verändern die fachliche Bedeutung beeinflussen würde. Beispiele sind eine benannte Rolle, ein Ablageort, eine Negation oder eine Ursache-Wirkungs-Beziehung. Insgesamt wurden 35 Referenzfakten definiert. Die vollständige Fassung befindet sich in Anhang~\ref{anhang_referenzkatalog}.
+
+Die Atomisierung verhindert, dass eine lange Ergebniszelle pauschal als „korrekt“ bewertet wird, obwohl nur ein Teil der enthaltenen Informationen übernommen wurde. R04 „Fehler und Herausforderungen“ besteht beispielsweise aus vier Fakten: zusätzlicher Arbeitsaufwand, nachträgliche Kommunikation, Bedeutung guter Anfangsplanung und Vermeidung späterer Nachjustierungen. R11 „Zukünftige Trends“ umfasst vier getrennte Themen: Google Cloud Platform, Dunkelverarbeitung, Künstliche Intelligenz und Gemini.
+
+Zusätzlich werden drei risikorelevante Faktentypen separat geprüft:
+
+\begin{itemize}
+  \item \textbf{Benannte Entitäten:} 14 Rollen, Systeme, Technologien oder Regelwerke;
+  \item \textbf{Negationen und Abwesenheitsaussagen:} sechs Aussagen wie „keine externen Stakeholder“;
+  \item \textbf{kausale oder konditionale Beziehungen:} fünf Beziehungen, beispielsweise „falsche Annahme führt zu fehlerhaftem Code“.
+\end{itemize}
+
+Diese Zusatzprüfung ist relevant, weil eine Zusammenfassung zwar thematisch ähnlich sein kann, aber durch den Verlust einer Negation oder Kausalbeziehung die Aussage umkehrt. Der Referenzstandard enthält deshalb nicht nur Schlagworte, sondern die erwartete semantische Relation zwischen den Fakten.
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 4
+% ------------------------------------------------------------
+\newpage
+\section{Auswertungsverfahren und Testregeln}
+
+\subsection{Codierung}
+
+Jede Ergebniszelle aus D2 und D3 wurde gegen den zugehörigen Eintrag im Referenzkatalog geprüft. Die Codierung erfolgte mit folgenden Regeln:
+
+\begin{enumerate}
+  \item Ein Referenzfakt wird als \textbf{True Positive (TP)} gezählt, wenn seine fachliche Bedeutung vollständig erhalten bleibt. Synonyme und Umformulierungen sind zulässig.
+  \item Ein Referenzfakt wird als \textbf{False Negative (FN)} gezählt, wenn er fehlt oder so abgeschwächt wird, dass die operative Bedeutung verloren geht.
+  \item Eine zusätzliche Tatsachenbehauptung wird als \textbf{False Positive (FP)} gezählt, wenn sie nicht aus dem Referenzkatalog ableitbar ist.
+  \item Reine Stilergänzungen ohne neue Tatsachenbehauptung werden nicht als FP gewertet.
+  \item Kategorie, Keyword und Dokumentbereich werden unabhängig vom Inhalt binär bewertet.
+\end{enumerate}
+
+Für Abweichungen wird folgende Schwereklassifikation verwendet:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{C{1.2cm}L{2.3cm}Y L{3.0cm}}
+\toprule
+\rowcolor{tablelight}
+\textbf{Stufe} & \textbf{Bezeichnung} & \textbf{Definition} & \textbf{Beispiel}\\
+\midrule
+0 & keine & fachlich gleichwertige Wiedergabe & „zusätzlicher“ statt „erhöhter“ Aufwand\\
+1 & gering & unbelegte, aber nicht widersprüchliche Ergänzung & zusätzliche Negativfeststellung\\
+2 & schwer & Auslassung oder Veränderung einer handlungsrelevanten Aussage & falscher Ansprechpartner\\
+3 & kritisch & Umkehrung, Erfindung oder sensible Fehlzuordnung mit möglichem Schaden & „Zugriff vorhanden“ statt „Zugriff fällt aus“\\
+\bottomrule
+\end{tabularx}
+\caption{Schwereklassifikation für Inhaltsabweichungen}
+\label{tab:fehlerschwere}
+\end{table}
+
+\subsection{Kennzahlen}
+
+Für Vollständigkeit, Präzision und F1-Wert gelten:
+
+\begin{align}
+R &= \frac{TP}{TP+FN} \\
+P &= \frac{TP}{TP+FP} \\
+F_1 &= 2\cdot\frac{P\cdot R}{P+R}
+\end{align}
+
+Die strenge Konsistenz wird auf Zellebene berechnet. Eine Zelle gilt nur dann als konsistent, wenn beide Durchläufe denselben fachlichen Kern enthalten und keine zusätzliche Tatsachenbehauptung nur in einem Durchlauf auftritt. Daneben wird die \emph{Kernfakten-Konsistenz} ausgewiesen, die ausschließlich prüft, ob alle 35 Soll-Fakten in beiden Durchläufen enthalten sind.
+
+Der Gesamtqualitätswert lautet:
+
+\begin{equation}
+Q = 0{,}35R + 0{,}30P + 0{,}20S + 0{,}15K
+\end{equation}
+
+Dabei sind $S$ die Strukturkonformität und $K$ die strenge Konsistenz. Der Wert dient der verdichteten Einordnung; die Einzelkennzahlen bleiben maßgeblich, weil ein hoher Mittelwert einen kritischen Einzelfehler nicht ausgleichen darf.
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 5
+% ------------------------------------------------------------
+\newpage
+\section{Ergebnisse der Qualitätsanalyse}
+
+\subsection{Quantitative Ergebnisse}
+
+In beiden Durchläufen wurden alle 35 Referenzfakten wiedergegeben. Damit beträgt der Recall jeweils \pct{100}. Durchlauf 1 enthält zusätzlich die Aussage, dass keine Tipps zur Vermeidung falscher Annahmen genannt worden seien. Diese Aussage ist plausibel, aber im Referenzkatalog nicht enthalten und wird deshalb konservativ als ein FP der Schwere 1 gewertet. Durchlauf 2 enthält keine unbelegte Ergänzung.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{Y C{1.9cm}C{1.9cm}C{2.0cm}}
+\toprule
+\rowcolor{tablelight}
+\textbf{Kennzahl} & \textbf{Durchlauf 1} & \textbf{Durchlauf 2} & \textbf{Gesamt}\\
+\midrule
+TP / FN / FP & 35 / 0 / 1 & 35 / 0 / 0 & eine geringe Zusatzbehauptung\\
+Recall & \pct{100} & \pct{100} & H2 erfüllt\\
+Präzision & \pct{97{,}2} & \pct{100} & Mittelwert \pct{98{,}6}; H3 erfüllt\\
+F1-Wert & \pct{98{,}6} & \pct{100} & hohe inhaltliche Übereinstimmung\\
+Kategorie korrekt & 13/13 & 13/13 & \pct{100}\\
+Keyword korrekt & 13/13 & 13/13 & \pct{100}\\
+Dokumentbereich korrekt & 13/13 & 13/13 & \pct{100}\\
+Strenge Zellkonsistenz & \multicolumn{2}{c}{12/13 = \pct{92{,}3}} & H4 erfüllt\\
+Kernfakten-Konsistenz & \multicolumn{2}{c}{35/35 = \pct{100}} & alle Soll-Fakten stabil\\
+Gesamtqualitätswert $Q$ & \multicolumn{2}{c}{\pct{98{,}4}} & keine schwere/kritische Abweichung\\
+\bottomrule
+\end{tabularx}
+\caption{Ergebnisse der faktenbasierten Qualitätsbewertung}
+\label{tab:qualitaetsergebnisse}
+\end{table}
+
+Auch die risikorelevanten Faktentypen wurden vollständig erhalten: 14 von 14 benannten Entitäten, sechs von sechs Negationen und fünf von fünf kausalen beziehungsweise konditionalen Beziehungen sind in beiden Durchläufen enthalten. Die Stabilität ist damit nicht auf allgemeine Themenähnlichkeit beschränkt, sondern umfasst konkrete Rollen, Systeme und Handlungsbeziehungen.
+
+\subsection{Konkrete Befunde}
+
+Tabelle~\ref{tab:belegfaelle} zeigt fünf prüfungsrelevante Beispiele. Die vollständige Codiermatrix befindet sich in Anhang~\ref{anhang_codiermatrix}.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\begin{tabularx}{\textwidth}{L{1.0cm}L{3.4cm}Y L{2.5cm}}
+\toprule
+\rowcolor{tablelight}
+\textbf{ID} & \textbf{Referenzkern} & \textbf{Beobachtung in D2/D3} & \textbf{Bewertung}\\
+\midrule
+R02 & keine externen Stakeholder; Abstimmung im Squad und mit Architekten; bei jedem neuen Service & alle drei Fakten und die Negation in beiden Durchläufen enthalten & 3 TP je Durchlauf\\
+R04 & Mehraufwand; nachträgliche Kommunikation; gute Anfangsplanung; weniger Nachjustierung & semantisch gleichwertige Formulierungen, keine Bedeutungsverschiebung & 4 TP je Durchlauf\\
+R05 & Zugriff technischer User fällt aus; Berechtigungsmanagement oder Rezertifizierung kontaktieren & Ausfall und beide zuständigen Stellen erhalten & 3 TP je Durchlauf\\
+R07 & falsche Annahmen führen zu fehlerhaftem Code & Kernbeziehung in beiden Durchläufen; D2 ergänzt unbelegt „keine Tipps genannt“ & D2: 2 TP + 1 FP, Stufe 1; D3: 2 TP\\
+R11 & GCP, Dunkelverarbeitung, KI und Gemini als Trends & alle vier benannten Technologien beziehungsweise Themen erhalten & 4 TP je Durchlauf\\
+\bottomrule
+\end{tabularx}
+\caption{Konkrete Belegfälle aus der Inhaltsanalyse}
+\label{tab:belegfaelle}
+\end{table}
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 6
+% ------------------------------------------------------------
+\newpage
+\section{Aufwandsanalyse und Sensitivität}
+
+Die Projektdokumentation setzt 120 Minuten für den manuellen und 45 Minuten für den agentengestützten Prozess an \cite{sommer2026projekt}. Da keine phasenweise Zeitmessung vorliegt, wird die Gesamtzeit für die Analyse transparent in Prozessanteile zerlegt. Diese Zerlegung ist eine modellierte Annahme und kein nachträglich behaupteter Messwert.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{Y C{2.2cm}C{2.2cm}Y}
+\toprule
+\rowcolor{tablelight}
+\textbf{Phase} & \textbf{Manuell} & \textbf{Agent} & \textbf{Annahme}\\
+\midrule
+Vorbereitung & 10 min & 5 min & Auswahl von Rolle, Thema und Leitfaden\\
+Interview & 45 min & 32 min & strukturierte Befragung; Agent übernimmt Führung\\
+Sichtung/Transkriptbereinigung & 20 min & 0 min & entfällt im Modell durch gespeicherte Rohantworten\\
+Zusammenfassung/Kategorisierung & 30 min & 1 min & automatische Verarbeitung\\
+Dokumentformatierung & 10 min & 0 min & automatische DOCX-Erstellung\\
+Prüfung, Download und Ablage & 5 min & 7 min & fachliche Kontrolle und manuelle Ablage\\
+\midrule
+\textbf{Gesamt} & \textbf{120 min} & \textbf{45 min} & dokumentierte Gesamtannahmen\\
+\bottomrule
+\end{tabularx}
+\caption{Modellierte Phasenzerlegung der Prozesszeiten}
+\label{tab:phasenzeit}
+\end{table}
+
+Die relative Reduktion beträgt:
+
+\begin{equation}
+E_t = \frac{120-45}{120} = 0{,}625 = \pct{62{,}5}
+\end{equation}
+
+Bei 168 Fällen pro Jahr ergibt sich ein modelliertes Potenzial von 210 Stunden. Entscheidend ist die Dauer der menschlichen Prüfung. Ohne Prüfung und Ablage beträgt die modellierte Agentenbasis 38 Minuten; jeder zusätzliche Prüfblock von 15 Minuten reduziert das Jahrespotenzial um 42 Stunden.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{Y C{2.2cm}C{2.5cm}C{2.6cm}}
+\toprule
+\rowcolor{tablelight}
+\textbf{Szenario} & \textbf{Gesamtzeit} & \textbf{Ersparnis je Fall} & \textbf{Ersparnis/Jahr}\\
+\midrule
+Projektannahme & 45 min & 75 min (\pct{62{,}5}) & 210 h\\
+H1-Grenze & 60 min & 60 min (\pct{50}) & 168 h\\
+mittlere Nacharbeit & 75 min & 45 min (\pct{37{,}5}) & 126 h\\
+hohe Nacharbeit & 90 min & 30 min (\pct{25}) & 84 h\\
+vollständige Gleichheit & 120 min & 0 min & 0 h\\
+\bottomrule
+\end{tabularx}
+\caption{Sensitivitätsanalyse des Bearbeitungsaufwands}
+\label{tab:sensitivitaet}
+\end{table}
+
+H1 ist unter der Projektannahme erfüllt. Der Agent erreicht die geforderte Halbierung jedoch nur, solange der gesamte Ablauf höchstens 60 Minuten dauert. Für einen Pilotbetrieb ist deshalb die separate Messung von Interview-, Prüf- und Korrekturzeit wichtiger als die reine Modelllaufzeit.
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 7
+% ------------------------------------------------------------
+\newpage
+\section{Diskussion, Grenzen und Robustheit}
+
+Die Ergebnisse zeigen für den dokumentierten Testfall eine hohe Übertragungsqualität. Der Agent erhält sämtliche Soll-Fakten, Negationen, Entitäten und Beziehungen. Die einzige Abweichung ist eine unbelegte, aber nicht widersprüchliche Zusatzfeststellung. Dieses Fehlerbild ist für generative Zusammenfassungen relevant: Eine plausible Erweiterung kann später als Aussage der interviewten Person missverstanden werden. Deshalb müssen Rohantwort und Kurzfassung dauerhaft miteinander verknüpft bleiben.
+
+Die hohe Strukturkonformität ist nicht allein eine Leistung des Sprachmodells. Kategorie und Keyword werden aus dem festen Fragenkatalog übernommen. Das System kombiniert damit deterministische Prozessregeln mit generativer Verdichtung. Diese Begrenzung reduziert Variabilität und erklärt, warum alle 39 Strukturprüfungen bestanden wurden. Der Befund spricht für einen unterstützenden, nicht für einen vollständig autonomen Einsatz.
+
+Die Aussagekraft bleibt eingeschränkt. Erstens stammen beide Ergebnisdateien aus demselben fachlichen Fall. Zweitens wurde der Referenzkatalog retrospektiv rekonstruiert und ist nicht unabhängig vom Projektmaterial entstanden. Drittens sind Entwickler und Bewerter identisch. Viertens beruht der Zeitvergleich auf Modellannahmen und nicht auf kontrollierten Messreihen. Die Ergebnisse belegen daher die Funktionsfähigkeit des konkreten MVP, nicht die generelle Überlegenheit KI-gestützter Wissenssicherung.
+
+Zur Verringerung dieser Risiken wurde ein synthetischer Robustheitstest entworfen. Die Testfälle sind im Anhang~\ref{anhang_stresstest} dokumentiert und ausdrücklich nicht als bereits durchgeführte empirische Tests ausgewiesen. Sie decken sechs Fehlerklassen ab: sehr kurze Antworten, Umgangssprache, mehrere Fakten in einer Antwort, Widersprüche, irrelevante Abschweifungen und sensible personenbezogene Angaben. Für jeden Fall sind Eingabe, erwartetes Verhalten und Abnahmekriterium festgelegt. Ein solcher Katalog erlaubt spätere Wiederholungstests, ohne reale Beschäftigtendaten zu verwenden.
+
+Für einen belastbaren Pilotnachweis sollten mindestens zehn heterogene Wissenssicherungen ausgewertet werden. Zwei fachkundige Personen sollten unabhängig codieren; die Übereinstimmung kann beispielsweise als prozentuale Übereinstimmung oder Cohen-Kappa dokumentiert werden. Zusätzlich sind folgende Betriebskennzahlen zu erheben:
+
+\begin{itemize}
+  \item Prüf- und Korrekturzeit je Ergebniszelle,
+  \item Anzahl schwerer und kritischer Inhaltsabweichungen,
+  \item Anteil notwendiger Rückfragen,
+  \item Nutzbarkeit der Dokumente durch Nachfolger:innen,
+  \item Auffindbarkeit und Aktualität nach drei beziehungsweise sechs Monaten.
+\end{itemize}
+
+Die Einführung sollte menschzentriert erfolgen. Forschung zu digitalen Arbeits- und Wissenssystemen betont die Beteiligung der Beschäftigten, transparente Rollen und die gemeinsame Gestaltung technischer und organisatorischer Prozesse \cite[S.~23--33]{boehme_nedz_2023}. Auch KI-Wissensplattformen werden typischerweise iterativ pilotiert und anhand konkreter Anwendungsfälle verbessert \cite[S.~136--141]{volkens_wissensmanagement_2026}.
+
+% ------------------------------------------------------------
+% Hauptteil - Seite 8
+% ------------------------------------------------------------
+\newpage
+\section{Fazit und Handlungsempfehlungen}
+
+Die Forschungsfrage kann für den untersuchten MVP eingeschränkt positiv beantwortet werden. Unter der dokumentierten Zeitannahme reduziert der Agent den Bearbeitungsaufwand von 120 auf 45 Minuten und erreicht damit eine modellierte Einsparung von \pct{62{,}5}. Beide Ergebnisdateien enthalten alle 35 Referenzfakten. Der Recall beträgt \pct{100}; die Präzision liegt bei \pct{97{,}2} beziehungsweise \pct{100}. Kategorie, Keyword und Dokumentbereich wurden in allen 39 Prüfungen korrekt übernommen. Die strenge Konsistenz beträgt \pct{92{,}3}; die Kernfakten-Konsistenz \pct{100}. Es trat keine schwere oder kritische Abweichung auf. Die Hypothesen H1 bis H4 sind damit innerhalb des Einzelfalls erfüllt.
+
+Der wissenschaftliche Mehrwert gegenüber der Projektdokumentation liegt in der expliziten Evidenzkette, dem 35-Fakten-Referenzkatalog, den vorab definierten Codierregeln, der Fehlerschwereklassifikation und der Sensitivitätsanalyse. Dadurch wird nachvollziehbar, wie die Prozentwerte zustande kommen und welche Aussagegrenzen bestehen. Die Arbeit behauptet weder erfundene Interviews noch gemessene Zeitwerte, die tatsächlich nur modelliert wurden.
+
+Für die weitere Entwicklung werden vier Maßnahmen priorisiert:
+
+\begin{enumerate}
+  \item \textbf{Verpflichtende fachliche Freigabe:} Kurzfassung und Rohantwort müssen gemeinsam angezeigt und bestätigt werden.
+  \item \textbf{Automatische Antwortvalidierung:} Der Agent soll bei knappen, widersprüchlichen oder unklaren Antworten nachfragen und Unsicherheit markieren.
+  \item \textbf{Messbarer Pilot:} Interview-, Prüf-, Korrektur- und Ablagezeit sind getrennt zu erfassen; die Qualitätsbewertung erfolgt durch mindestens zwei Personen.
+  \item \textbf{Governance:} Rollen, Zugriffsrechte, Löschfristen, Pflegeverantwortung und zulässige Inhaltsarten sind vor Produktivsetzung festzulegen.
+\end{enumerate}
+
+Der größte Nutzen des Agenten liegt nicht in einer autonomen Ersetzung menschlicher Wissensübergabe. Er liegt in der Standardisierung des Ablaufs und der Automatisierung wiederkehrender Nachbereitungsschritte. Unter der Voraussetzung einer transparenten Human-in-the-Loop-Freigabe ist der entwickelte Ansatz als Grundlage für einen begrenzten betrieblichen Pilot geeignet.
+
+% ------------------------------------------------------------
+% Literatur
+% ------------------------------------------------------------
+\newpage
+\addcontentsline{toc}{section}{Literatur}
+\begingroup
+\raggedright
+\bibliographystyle{IEEEtran}
+\bibliography{Quellen_bereinigt}
+\endgroup
+
+% ------------------------------------------------------------
+% Relevanter Anhang
+% ------------------------------------------------------------
+\newpage
+\appendix
+\pagenumbering{roman}
+\setcounter{page}{1}
+\section{Anhang}
+
+\subsection{Vollständiger Referenzkatalog}
+\label{anhang_referenzkatalog}
+
+\scriptsize
+\begin{longtable}{L{0.8cm}L{2.6cm}L{2.8cm}L{8.1cm}C{1.0cm}}
+\toprule
+\rowcolor{tablehead}
+\textcolor{white}{\textbf{ID}} &
+\textcolor{white}{\textbf{Kategorie}} &
+\textcolor{white}{\textbf{Keyword}} &
+\textcolor{white}{\textbf{Atomare Referenzfakten}} &
+\textcolor{white}{\textbf{n}}\\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{tablehead}
+\textcolor{white}{\textbf{ID}} &
+\textcolor{white}{\textbf{Kategorie}} &
+\textcolor{white}{\textbf{Keyword}} &
+\textcolor{white}{\textbf{Atomare Referenzfakten}} &
+\textcolor{white}{\textbf{n}}\\
+\midrule
+\endhead
+R01 & Prozesse und Arbeitsschritte & Wichtige Ansprechpartner & Squad LMLV; EAM-Architekten & 2\\
+R02 & Prozesse und Arbeitsschritte & Kommunikation & keine externen Stakeholder; Abstimmung innerhalb des Squads und mit den Architekten; Abstimmung bei jedem neuen Service & 3\\
+R03 & Prozesse und Arbeitsschritte & Hintergründe & keine besonderen Hintergründe oder Entscheidungen für Nachfolger:innen genannt & 1\\
+R04 & Erfahrungen und Empfehlungen & Fehler und Herausforderungen & zusätzlicher Arbeitsaufwand; nachträgliche Kommunikation; gute Anfangsplanung als zentrale Erkenntnis; dadurch weniger spätere Nachjustierung & 4\\
+R05 & Prozesse und Arbeitsschritte & Probleme & Ausfall der Zugriffe technischer User; Kontakt zum Berechtigungsmanagement; alternativ beziehungsweise zusätzlich Rezertifizierung kontaktieren & 3\\
+R06 & Prozesse und Arbeitsschritte & Abhängigkeiten & grundsätzlich keine undokumentierten Abhängigkeiten; Ausnahme bei nicht vollständig automatisierten Services; zusätzliche manuelle Arbeit durch weitere Personen & 3\\
+R07 & Erfahrungen und Empfehlungen & Risiken & falsche Annahmen als größtes Fehlerrisiko; daraus kann fehlerhafter Code entstehen & 2\\
+R08 & Prozesse und Arbeitsschritte & Regeltätigkeiten & wiederkehrende Tätigkeiten sind dokumentiert; DORA; Rezertifizierung & 3\\
+R09 & Erfahrungen und Empfehlungen & Tipps & keine undokumentierten praktischen Tipps genannt & 1\\
+R10 & Sonstiges & Zukünftige Aufgaben & Umstieg auf die Google Cloud Platform; Umsetzung zu einem späteren Zeitpunkt & 2\\
+R11 & Sonstiges & Zukünftige Trends & Google Cloud Platform; weiterer Ausbau der Dunkelverarbeitung; Künstliche Intelligenz; Gemini & 4\\
+R12 & Prozesse und Arbeitsschritte & Dokumentation & Confluence/Wiki; its360; sai & 3\\
+R13 & Sonstiges & Externe Weiterbildung & keine spezifischen Blogs, Foren oder Fachzeitschriften; allgemeine Webseiten und Dokumentationen; Spring Boot; Java & 4\\
+\midrule
+\multicolumn{4}{r}{\textbf{Summe der Referenzfakten}} & \textbf{35}\\
+\bottomrule
+\caption{Retrospektiv rekonstruierter Referenzkatalog R01--R13}
+\label{tab:referenzkatalog}
+\end{longtable}
+\normalsize
+
+\newpage
+\subsection{Vollständige Codiermatrix der zwei Ergebnisdateien}
+\label{anhang_codiermatrix}
+
+\scriptsize
+\begin{longtable}{L{0.8cm}C{1.0cm}C{1.0cm}C{1.0cm}C{1.0cm}C{1.0cm}C{1.0cm}L{7.2cm}}
+\toprule
+\rowcolor{tablehead}
+\textcolor{white}{\textbf{ID}} &
+\textcolor{white}{\textbf{Ref.}} &
+\textcolor{white}{\textbf{TP1}} &
+\textcolor{white}{\textbf{FN1}} &
+\textcolor{white}{\textbf{FP1}} &
+\textcolor{white}{\textbf{TP2}} &
+\textcolor{white}{\textbf{FN2}} &
+\textcolor{white}{\textbf{Kommentar}}\\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{tablehead}
+\textcolor{white}{\textbf{ID}} &
+\textcolor{white}{\textbf{Ref.}} &
+\textcolor{white}{\textbf{TP1}} &
+\textcolor{white}{\textbf{FN1}} &
+\textcolor{white}{\textbf{FP1}} &
+\textcolor{white}{\textbf{TP2}} &
+\textcolor{white}{\textbf{FN2}} &
+\textcolor{white}{\textbf{Kommentar}}\\
+\midrule
+\endhead
+R01 & 2 & 2 & 0 & 0 & 2 & 0 & beide Ansprechpartner vollständig\\
+R02 & 3 & 3 & 0 & 0 & 3 & 0 & Negation und Bedingung „neuer Service“ erhalten\\
+R03 & 1 & 1 & 0 & 0 & 1 & 0 & Negativaussage erhalten\\
+R04 & 4 & 4 & 0 & 0 & 4 & 0 & alle vier Kernbestandteile erhalten\\
+R05 & 3 & 3 & 0 & 0 & 3 & 0 & Problem und beide zuständigen Stellen enthalten\\
+R06 & 3 & 3 & 0 & 0 & 3 & 0 & Ausnahmebeziehung korrekt wiedergegeben\\
+R07 & 2 & 2 & 0 & 1 & 2 & 0 & D1 ergänzt „keine Tipps genannt“; geringe Abweichung\\
+R08 & 3 & 3 & 0 & 0 & 3 & 0 & Dokumentationsstatus, DORA und Rezertifizierung erhalten\\
+R09 & 1 & 1 & 0 & 0 & 1 & 0 & Negativaussage erhalten\\
+R10 & 2 & 2 & 0 & 0 & 2 & 0 & Aufgabe und zeitlicher Horizont erhalten\\
+R11 & 4 & 4 & 0 & 0 & 4 & 0 & alle vier Zukunftsthemen enthalten\\
+R12 & 3 & 3 & 0 & 0 & 3 & 0 & drei Ablageorte erhalten\\
+R13 & 4 & 4 & 0 & 0 & 4 & 0 & Negation, Quellenart und zwei Technologien erhalten\\
+\midrule
+\textbf{Summe} & \textbf{35} & \textbf{35} & \textbf{0} & \textbf{1} & \textbf{35} & \textbf{0} & \\
+\bottomrule
+\caption{Codiermatrix der dokumentierten Ergebnisdateien}
+\label{tab:codiermatrix}
+\end{longtable}
+\normalsize
+
+\newpage
+\subsection{Synthetischer Robustheitstest für einen späteren Pilot}
+\label{anhang_stresstest}
+
+Die folgenden Testfälle sind synthetisch und wurden nicht als reale Interviews ausgegeben. Sie dienen als reproduzierbarer Testdatensatz für zukünftige Agentenläufe.
+
+\small
+\begin{longtable}{L{0.8cm}L{3.6cm}L{6.2cm}L{4.2cm}}
+\toprule
+\rowcolor{tablehead}
+\textcolor{white}{\textbf{ID}} &
+\textcolor{white}{\textbf{Synthetische Eingabe}} &
+\textcolor{white}{\textbf{Erwartetes Verhalten}} &
+\textcolor{white}{\textbf{Abnahmekriterium}}\\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{tablehead}
+\textcolor{white}{\textbf{ID}} &
+\textcolor{white}{\textbf{Synthetische Eingabe}} &
+\textcolor{white}{\textbf{Erwartetes Verhalten}} &
+\textcolor{white}{\textbf{Abnahmekriterium}}\\
+\midrule
+\endhead
+S01 & „Weiß ich nicht.“ & keine positive Fachinformation erfinden; Antwort als unzureichend markieren und nachfragen & keine Halluzination; Rückfrage wird ausgelöst\\
+S02 & „Boah, eigentlich keine, läuft halt irgendwie über Max und manchmal über das Architekturteam.“ & Umgangssprache neutral zusammenfassen; zwei Ansprechpartner trennen; Unsicherheit „manchmal“ erhalten & beide Rollen enthalten; Unsicherheit nicht entfernt\\
+S03 & „Bei jedem neuen Service stimmen wir uns mit dem Squad ab, danach prüft EAM die Architektur und das Berechtigungsmanagement richtet die User ein.“ & drei Prozessschritte und Reihenfolge erhalten & 3/3 Fakten und Reihenfolge korrekt\\
+S04 & „Die Zugriffe fallen nie aus. Letzten Monat sind sie aber wegen der Rezertifizierung ausgefallen.“ & Widerspruch erkennen und Klärungsfrage stellen & keine eindeutige Zusammenfassung vor Klärung\\
+S05 & Antwort enthält private Gesundheits- oder Leistungsinformationen über eine benannte Person & sensible Information nicht unkritisch in allgemeines Wissensdokument übernehmen; Warnung/Freigabe verlangen & Markierung als sensibel; keine automatische Veröffentlichung\\
+S06 & lange Antwort mit projektfremder Abschweifung und einem relevanten Satz am Ende & irrelevante Passage verwerfen, relevanten Fakt erhalten & relevanter Fakt vollständig; keine fachfremden Inhalte\\
+\bottomrule
+\caption{Synthetischer Robustheitstestkatalog}
+\label{tab:stresstest}
+\end{longtable}
+\normalsize
+
+\end{document}
