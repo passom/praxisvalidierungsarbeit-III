@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+<path d="M0,0 L0,6 L9,3 z" fill="#174786"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="800" y="68" text-anchor="middle" fill="#123B78" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700">Untersuchungsdesign und Evidenzstruktur</text>
+<rect x="390" y="105" width="820" height="74" rx="10" fill="#FFFFFF" stroke="#174786" stroke-width="3"/>
+<text x="800" y="153" text-anchor="middle" fill="#123B78" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700">IHK-Praxisprojekt: KI-Agent zur Wissenssicherung</text>
+<line x1="800" y1="179" x2="800" y2="220" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="800,220 345,220 345,257" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<polyline points="800,220 1255,220 1255,257" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<line x1="800" y1="250" x2="800" y2="990" stroke="#5687C8" stroke-width="2" fill="none" stroke-dasharray="8 10"/>
+<rect x="55" y="270" width="610" height="76" rx="10" fill="#123B78" stroke="#123B78" stroke-width="2"/>
+<text x="360" y="319" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700">Empirische Evaluation</text>
+<rect x="930" y="270" width="615" height="76" rx="10" fill="#5687C8" stroke="#174786" stroke-width="2"/>
+<text x="1238" y="319" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700">Methodenvalidierung</text>
+<line x1="360" y1="346" x2="360" y2="385" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="105" y="390" width="510" height="104" rx="10" fill="#EEF4FA" stroke="#174786" stroke-width="2"/>
+<text x="360" y="422" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700"><tspan x="360" dy="0">1 realer Interviewfall</tspan><tspan x="360" dy="27.5">LMLV-Toolingservice</tspan><tspan x="360" dy="27.5">13 Fragen</tspan></text>
+<line x1="360" y1="494" x2="360" y2="528" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="105" y="533" width="510" height="88" rx="10" fill="#EEF4FA" stroke="#174786" stroke-width="2"/>
+<text x="360" y="565" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700"><tspan x="360" dy="0">Referenzstandard</tspan><tspan x="360" dy="27.5">35 atomare Referenzfakten</tspan></text>
+<line x1="360" y1="621" x2="360" y2="660" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="360,660 190,660 190,690" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<polyline points="360,660 530,660 530,690" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="78" y="695" width="224" height="70" rx="9" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="190" y="739" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">Realer Durchlauf 1</text>
+<rect x="418" y="695" width="224" height="70" rx="9" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="530" y="739" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">Realer Durchlauf 2</text>
+<polyline points="190,765 190,810 360,810" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="530,765 530,810 360,810" stroke="#174786" stroke-width="2" fill="none"/>
+<line x1="360" y1="810" x2="360" y2="837" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="90" y="842" width="540" height="74" rx="10" fill="#EEF4FA" stroke="#174786" stroke-width="2"/>
+<text x="360" y="888" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Faktenbasierte Qualitätsprüfung</text>
+<line x1="360" y1="916" x2="360" y2="945" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="360,945 105,945 105,968" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="27" y="973" width="156" height="66" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="105" y="1014" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Faktendeckung</text>
+<polyline points="360,945 275,945 275,968" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="197" y="973" width="156" height="66" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="275" y="1014" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Präzision</text>
+<polyline points="360,945 445,945 445,968" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="367" y="973" width="156" height="66" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="445" y="1014" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Strukturkonformität</text>
+<polyline points="360,945 615,945 615,968" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="537" y="973" width="156" height="66" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="615" y="1014" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Laufstabilität</text>
+<line x1="1238" y1="346" x2="1238" y2="385" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="955" y="390" width="565" height="82" rx="10" fill="#EEF4FA" stroke="#174786" stroke-width="2"/>
+<text x="1238" y="441" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Synthetischer Validierungskorpus</text>
+<line x1="1238" y1="472" x2="1238" y2="520" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="1238,520 1008,520 1008,548" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<line x1="1238" y1="520" x2="1238" y2="548" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<polyline points="1238,520 1468,520 1468,548" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="895" y="553" width="226" height="120" rx="10" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="1008" y="588" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700"><tspan x="1008" dy="0">Vollinterview B</tspan><tspan x="1008" dy="22.5">Komplexe</tspan><tspan x="1008" dy="22.5">Cloud-Migration</tspan></text>
+<rect x="1125" y="553" width="226" height="120" rx="10" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="1238" y="588" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700"><tspan x="1238" dy="0">Vollinterview C</tspan><tspan x="1238" dy="21.2">Kritischer</tspan><tspan x="1238" dy="21.2">Berechtigungs-</tspan><tspan x="1238" dy="21.2">prozess</tspan></text>
+<rect x="1355" y="553" width="226" height="120" rx="10" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="1468" y="602" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700"><tspan x="1468" dy="0">12 Robustheitsfälle</tspan></text>
+<polyline points="1008,673 1008,720 1238,720" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="1238,673 1238,720" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="1468,673 1468,720 1238,720" stroke="#174786" stroke-width="2" fill="none"/>
+<line x1="1238" y1="720" x2="1238" y2="757" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="965" y="762" width="546" height="74" rx="10" fill="#EEF4FA" stroke="#174786" stroke-width="2"/>
+<text x="1238" y="808" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">Prüfung der Codierregeln und Fehlerklassen</text>
+<line x1="1238" y1="836" x2="1238" y2="875" stroke="#174786" stroke-width="2" fill="none"/>
+<polyline points="1238,875 960,875 960,900" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="878" y="905" width="164" height="64" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="960" y="944" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Auslassungen</text>
+<polyline points="1238,875 1145,875 1145,900" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1063" y="905" width="164" height="64" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="1145" y="944" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Halluzinationen</text>
+<polyline points="1238,875 1330,875 1330,900" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1248" y="905" width="164" height="64" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="1330" y="944" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Prompt-Injection</text>
+<polyline points="1238,875 1515,875 1515,900" stroke="#174786" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1433" y="905" width="164" height="64" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="1515" y="944" text-anchor="middle" fill="#17345E" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Geheimnisschutz</text>
+<rect x="92" y="1052" width="1416" height="48" rx="8" fill="#F8FAFD" stroke="#174786" stroke-width="2"/>
+<text x="800" y="1082" text-anchor="middle" fill="#123B78" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Empirischer Leistungsnachweis links; synthetische Daten rechts dienen ausschließlich der Methodenvalidierung.</text>
+</svg>

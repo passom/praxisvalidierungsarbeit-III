@@ -1,0 +1,103 @@
+%% Creator: Inkscape 1.4.2 (f4327f4, 2025-05-13), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1200bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.7)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.5,0.6575){\color[rgb]{0.07058824,0.23137255,0.47058824}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Untersuchungsdesign und Evidenzstruktur}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.5,0.604375){\color[rgb]{0.07058824,0.23137255,0.47058824}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{IHK-Praxisprojekt: KI-Agent zur Wissenssicherung}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.225,0.500625){\color[rgb]{1,1,1}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Empirische Evaluation}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.77375,0.500625){\color[rgb]{1,1,1}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Methodenvalidierung}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.20818344,0.43625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{1 realer Interviewfall}\textbf{LMLV-Toolingservice}\textbf{13 Fragen}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.23971512,0.346875){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Referenzstandard}\textbf{35 atomare Referenzfakten}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.11875,0.238125){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Realer Durchlauf 1}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.33125,0.238125){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Realer Durchlauf 2}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.225,0.145){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Faktenbasierte Qualitätsprüfung}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.065625,0.06625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Faktendeckung}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.171875,0.06625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Präzision}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.278125,0.06625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Strukturkonformität}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.384375,0.06625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Laufstabilität}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.77375,0.424375){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Synthetischer Validierungskorpus}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.63160538,0.3325){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Vollinterview B}\textbf{Komplexe}\textbf{Cloud-Migration}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.76494469,0.3325){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Vollinterview C}\textbf{Kritischer}\textbf{Berechtigungs-}\textbf{prozess}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.9175,0.32375){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{12 Robustheitsfälle}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.77375,0.195){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Prüfung der Codierregeln und Fehlerklassen}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.6,0.11){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Auslassungen}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.715625,0.11){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Halluzinationen}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.83125,0.11){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Prompt-Injection}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.946875,0.11){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Geheimnisschutz}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{untersuchungsdesign_evidenzstruktur(1)(1)_svg-tex.pdf}}%
+    \put(0.5,0.02375){\color[rgb]{0.07058824,0.23137255,0.47058824}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Empirischer Leistungsnachweis links; synthetische Daten rechts dienen ausschließlich der Methodenvalidierung.}\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

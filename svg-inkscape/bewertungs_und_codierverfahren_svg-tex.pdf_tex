@@ -1,0 +1,101 @@
+%% Creator: Inkscape 1.4.2 (f4327f4, 2025-05-13), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'bewertungs_und_codierverfahren_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1200bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.7)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.5,0.6575){\color[rgb]{0.07058824,0.23137255,0.47058824}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Bewertungs- und Codierverfahren}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.11171074,0.604375){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{1. Interviewantwort /}\textbf{Rohdaten}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.34404144,0.604375){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{2. Atomisierung in}\textbf{semantisch eigenständige}\textbf{Aussagen}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.56540527,0.604375){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{3. Referenzfakten}\textbf{(Soll)}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.046875,0.54125){\color[rgb]{0.4,0.43921569,0.49019608}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{Gesamter Inhalt der Interviewantwort.}\end{tabular}}}}%
+    \put(0.28125,0.54125){\color[rgb]{0.4,0.43921569,0.49019608}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{Aufteilung in einzelne,}\textit{semantisch eigenständige Fakten.}\end{tabular}}}}%
+    \put(0.509375,0.54125){\color[rgb]{0.4,0.43921569,0.49019608}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{Menge aller atomaren Referenzfakten}\textit{als Bewertungsstandard.}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.11803612,0.460625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{1. Agentenausgabe /}\textbf{Ergebnisdatei}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.36174316,0.460625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{2. Atomisierung der}\textbf{Ausgabebehauptungen}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.046875,0.39625){\color[rgb]{0.4,0.43921569,0.49019608}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{Gesamte Ausgabe des Systems oder Agenten.}\end{tabular}}}}%
+    \put(0.28125,0.39625){\color[rgb]{0.4,0.43921569,0.49019608}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{Aufteilung der Ausgabe in atomare}\textit{Ausgabebehauptungen.}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.60427895,0.453125){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Vergleich von}\textbf{Referenz und Ausgabe}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.846875,0.48625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{TP: korrekt übernommener Fakt}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.85047714,0.42375){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{FN: fehlender oder}\textbf{abgeschwächter Fakt}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.82889862,0.36125){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{FP: unbelegte zusätzliche}\textbf{Behauptung}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.115625,0.2725){\color[rgb]{0.07058824,0.23137255,0.47058824}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Verbindliche Codierregeln}\end{tabular}}}}%
+    \put(0.325,0.2725){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}• Synonyme sind zulässig.\end{tabular}}}}%
+    \put(0.325,0.25){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}• Negationen bleiben erhalten.\end{tabular}}}}%
+    \put(0.559375,0.2725){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}• Bedingungen und Kausalbeziehungen bleiben Bestandteil des Fakts.\end{tabular}}}}%
+    \put(0.559375,0.25){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}• Stilistische Unterschiede ohne neue Tatsachenbehauptung zählen nicht als FP.\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.5,0.155625){\color[rgb]{0.07058824,0.23137255,0.47058824}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Kennzahlen}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.14265503,0.11625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Faktendeckung}\textbf{(Recall)}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.371875,0.11625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Präzision}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.590625,0.11625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Fehlerschwere}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{bewertungs_und_codierverfahren_svg-tex.pdf}}%
+    \put(0.80059418,0.11625){\color[rgb]{0.09019608,0.20392157,0.36862745}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Laufstabilität zwischen}\textbf{Wiederholungen}\end{tabular}}}}%
+    \put(0.5,0.0325){\color[rgb]{0.4,0.43921569,0.49019608}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Grundidee angelehnt an atomare Faktenbewertung (ähnlich FActScore), erweitert um Vollständigkeit gegenüber einem Referenzstandard.\end{tabular}}}}%
+  \end{picture}%
+\endgroup%
