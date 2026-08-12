@@ -9,7 +9,7 @@
 ]{scrartcl}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.34\baselineskip plus 0.5pt minus 0.5pt}
+\setlength{\parskip}{0.33\baselineskip plus 0.5pt minus 0.5pt}
 \setlength{\emergencystretch}{2em}
 
 \usepackage[utf8]{inputenc}
@@ -226,36 +226,22 @@
 % ------------------------------------------------------------
 % Ende Code-Listings
 % ------------------------------------------------------------
-\usepackage[acronym, toc]{glossaries}
+\usepackage[acronym,toc,nonumberlist]{glossaries}
+\makenoidxglossaries
+\setacronymstyle{long-short}
 
-\newacronym{erd}{ERD}{Entity-Relation-Diagram}
-\newacronym{mvp}{MVP}{Minimum Viable Product}
-\newacronym{jav}{JAV}{Jugend- und Auszubildendenvertretung}
-\newacronym{br}{BR}{Betriebsrat}
-\newacronym{dod}{DoD}{Definition of Done}
-\newacronym{nps}{NPS}{Net Promoter Score}
-\newacronym{gcs}{GCS}{Google Cloud Storage}
 \newacronym{adk}{ADK}{Agent Development Kit}
+\newacronym{bhh}{BHH}{Berufliche Hochschule Hamburg}
+\newacronym{ihk}{IHK}{Industrie- und Handelskammer}
 \newacronym{ki}{KI}{Künstliche Intelligenz}
-\newacronym{ui}{UI}{User Interface}
+\newacronym{llm}{LLM}{Large Language Model}
+\newacronym{mvp}{MVP}{Minimum Viable Product}
+\newacronym{nist}{NIST}{National Institute of Standards and Technology}
+\newacronym{owasp}{OWASP}{Open Worldwide Application Security Project}
+\newacronym{pva}{PVA}{Praxisvalidierungsarbeit}
 
 %\newglossaryentry{gitlabrunner}{name={GitLab-Runner},description={Anwendung, die auf Aktionen eines Git Repositories reagiert und vorkonfigurierte Jobs ausführt}}
 %\newglossaryentry{rest}{name={REST}, description = {Representational State Transfer, Ein Paradigma für die Architektur von \gls{crud} Webanwendungen }}
-\newglossarystyle{abkuerzungen}{
-  \renewenvironment{theglossary}
-    {\begin{longtable}{@{}p{3.0cm}@{}p{\dimexpr\textwidth-3.0cm\relax}@{}}}
-    {\end{longtable}}
-
-  \renewcommand*{\glossentry}[2]{%
-    \glstarget{##1}{%
-      \makebox[3.0cm][l]{\textbf{\glossentryname{##1}}\dotfill}%
-    }&
-    \glossentrydesc{##1} \\
-  }
-
-  \renewcommand*{\subglossentry}[3]{}
-  \renewcommand*{\glsgroupskip}{}
-}
 
 % ------------- Abbildungen mit Tikz erstellen
 \usepackage{tikz}
@@ -327,16 +313,16 @@
 
 \vspace{1.5cm}
 \begin{center}
-	Abgabe: Hamburg, den 11.08.2026\\[3\baselineskip]
+	Abgabe: Hamburg, den 13.08.2026\\[3\baselineskip]
 	\textbf{\textcolor{ihk_blue}{Matrikelnummer: 236913}}
 
     Bachelor of Science (B.Sc.) \\[4\baselineskip]
 	
 	Erstbetreuung \\
-    Prof. Dr. Henning Klaffke \\[2\baselineskip]
+    Prof. Dr. Robert Mertens \\[2\baselineskip]
 
     Zweitbetreuung \\
-    Prof. Dr. Robert Mertens \\
+    Prof. Dr. Henning Klaffke \\
 
 \end{center}
 %-------------- Ende Titelseite -------------------------------------
@@ -351,14 +337,15 @@
 \tableofcontents
 
 \newpage
-\section*{Sperrvermerk}
+\phantomsection
 \addcontentsline{toc}{section}{Sperrvermerk}
+\section*{Sperrvermerk}
 Die vorliegende Praxisvalidierungsarbeit enthält vertrauliche interne Informationen der SIGNAL IDUNA Gruppe. Sie ist ausschließlich zur Bewertung im Rahmen des Studiums an der Beruflichen Hochschule Hamburg bestimmt. Eine Veröffentlichung, Vervielfältigung oder Weitergabe der Arbeit oder einzelner Inhalte an Dritte ist ohne ausdrückliche Zustimmung der SIGNAL IDUNA Gruppe nicht gestattet.
 
 \vspace{2cm}
 \begin{tabular}{@{}p{6cm}p{6cm}@{}}
 \hrulefill & \hrulefill\\
-Hamburg, den 11.08.2026 & Matrikelnummer 236913
+Hamburg, den 13.08.2026 & Matrikelnummer 236913
 \end{tabular}
 
 \vspace{2cm}
@@ -366,8 +353,9 @@ Hamburg, den 11.08.2026 & Matrikelnummer 236913
 Unterschrift
 
 \newpage
-\section*{Selbstständigkeitserklärung}
+\phantomsection
 \addcontentsline{toc}{section}{Selbstständigkeitserklärung}
+\section*{Selbstständigkeitserklärung}
 Hiermit erkläre ich an Eides statt, dass ich die vorliegende wissenschaftliche Arbeit selbstständig verfasst und keine anderen als die angegebenen Hilfsmittel benutzt habe. Quellen, die im Wortlaut oder dem Sinn nach verwendet wurden, sind kenntlich gemacht.
 
 Werkzeuge auf Basis künstlicher Intelligenz wurden unterstützend zur Strukturierung, sprachlichen Überarbeitung und Formulierung eingesetzt. Die inhaltliche Verantwortung, fachliche Prüfung und finale Bearbeitung der Inhalte liegen vollständig bei mir. In dieser Arbeit verwendete synthetische Testdaten und modellierte Annahmen werden ausdrücklich als solche gekennzeichnet.
@@ -375,7 +363,7 @@ Werkzeuge auf Basis künstlicher Intelligenz wurden unterstützend zur Strukturi
 \vspace{2cm}
 \begin{tabular}{@{}p{6cm}p{6cm}@{}}
 \hrulefill & \hrulefill\\
-Hamburg, den 11.08.2026 & Matrikelnummer 236913
+Hamburg, den 13.08.2026 & Matrikelnummer 236913
 \end{tabular}
 
 \vspace{2cm}
@@ -383,12 +371,22 @@ Hamburg, den 11.08.2026 & Matrikelnummer 236913
 Unterschrift
 
 \newpage
-\listoffigures
+\phantomsection
 \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\listoffigures
 
 \newpage
-\listoftables
+\phantomsection
 \addcontentsline{toc}{section}{Tabellenverzeichnis}
+\listoftables
+
+\newpage
+\glsaddall[types=\acronymtype]
+\printnoidxglossary[
+    type=\acronymtype,
+    style=list,
+    title={Abkürzungsverzeichnis}
+]
 
 % ------------------------------------------------------------
 % Hauptteil
@@ -396,17 +394,18 @@ Unterschrift
 \newpage
 \pagenumbering{arabic}
 \setcounter{page}{7}
+\glsresetall
 
 \section{Einleitung und Forschungsfrage}
 
-Beim Ausscheiden, Rollenwechsel oder längeren Ausfall erfahrener Beschäftigter besteht das Risiko, dass nicht nur formale Zuständigkeiten, sondern auch informelle Abläufe, persönliche Netzwerke, Fehlererfahrungen und bewährte Vorgehensweisen verloren gehen. Gelashvili-Luik et al. zeigen in einer systematischen Literaturübersicht, dass KI-gestützte Wissensmanagementsysteme zwar neue Möglichkeiten zur Erfassung und Bereitstellung von Wissen eröffnen, ihr Erfolg aber ebenso von Datenqualität, organisatorischer Einbettung, Qualifikation, Vertrauen und menschlicher Kontrolle abhängt \cite{gelashvili2025}. Junghans et al. beschreiben einen thematisch nahen Ansatz, bei dem informelle betriebliche Dialoge mit Sprachverarbeitung und Sprachmodellen in strukturiertes Organisationswissen überführt werden \cite{junghans2026}.
+Beim Ausscheiden, Rollenwechsel oder längeren Ausfall erfahrener Beschäftigter besteht das Risiko, dass nicht nur formale Zuständigkeiten, sondern auch informelle Abläufe, persönliche Netzwerke, Fehlererfahrungen und bewährte Vorgehensweisen verloren gehen. Gelashvili-Luik et al. zeigen in einer systematischen Literaturübersicht, dass Wissensmanagementsysteme auf Basis \gls{ki} zwar neue Möglichkeiten zur Erfassung und Bereitstellung von Wissen eröffnen, ihr Erfolg aber ebenso von Datenqualität, organisatorischer Einbettung, Qualifikation, Vertrauen und menschlicher Kontrolle abhängt \cite{gelashvili2025}. Junghans et al. beschreiben einen thematisch nahen Ansatz, bei dem informelle betriebliche Dialoge mit Sprachverarbeitung und Sprachmodellen in strukturiertes Organisationswissen überführt werden \cite{junghans2026}.
 
-\subsection{Gegenstand des zugrunde liegenden IHK-Praxisprojekts}
+\subsection{Gegenstand des zugrunde liegenden \glsentryshort{ihk}-Praxisprojekts}
 
-Die vorliegende Praxisvalidierungsarbeit baut auf dem IHK-Praxisprojekt \emph{Entwicklung eines KI-Agenten zur Sicherung impliziten Wissens -- Umsetzung mit Google ADK und Vertex AI} auf. Ziel dieses Projekts war die Entwicklung eines lauffähigen Minimum Viable Product (MVP), das einen bislang überwiegend manuellen und uneinheitlichen Wissenssicherungsprozess standardisiert. Der Agent richtet sich an Beschäftigte, deren fachliches, technisches oder prozessbezogenes Erfahrungswissen für spätere Übergaben, Einarbeitungen oder Vertretungssituationen gesichert werden soll \cite[S.~1--2]{sommer2026projekt}.
+Die vorliegende Praxisvalidierungsarbeit baut auf dem \gls{ihk}-Praxisprojekt \emph{Entwicklung eines \glsentryshort{ki}-Agenten zur Sicherung impliziten Wissens -- Umsetzung mit Google \glsentryshort{adk} und Vertex AI} auf. Ziel dieses Projekts war die Entwicklung eines lauffähigen \gls{mvp}, das einen bislang überwiegend manuellen und uneinheitlichen Wissenssicherungsprozess standardisiert. Der Agent richtet sich an Beschäftigte, deren fachliches, technisches oder prozessbezogenes Erfahrungswissen für spätere Übergaben, Einarbeitungen oder Vertretungssituationen gesichert werden soll \cite[S.~1--2]{sommer2026projekt}.
 Der Agent führt ein textbasiertes, leitfadengestütztes Interview in zwei Abschnitten. Teil~1 enthält allgemeine und rollenbezogene Fragen zu Netzwerken, Prozessen, Werkzeugen und Ressourcen. Teil~2 enthält 13 projektspezifische Fragen und wird für jedes von der interviewten Person benannte kritische Projekt beziehungsweise Aufgabenfeld wiederholt. Die Fragen adressieren unter anderem wichtige Ansprechpartner, Kommunikationsbeziehungen, Hintergründe von Entscheidungen, bewältigte Fehler und Herausforderungen, typische Probleme, informelle Abhängigkeiten, Fehlerrisiken, Regeltätigkeiten, praktische Tipps, zukünftige Aufgaben und Trends, Dokumentationsorte sowie externe Informationsquellen. Jede Frage besitzt bereits im Fragenkatalog eine Ergebniskategorie, ein Keyword und ein definiertes Erkenntnisinteresse \cite[S.~2]{sommer2026projekt}.
 
-Das MVP wurde als Single-Agent-Anwendung mit dem Google Agent Development Kit umgesetzt. Abbildung~\ref{fig:ihk_architektur} fasst die technische Architektur und die Trennung zwischen Benutzeroberfläche, Agent Runtime, Session State, Modellzugriff sowie den angebundenen Diensten zusammen \cite[S.~9--12]{sommer2026projekt}.
+Das \gls{mvp} wurde als Single-Agent-Anwendung mit dem Google \gls{adk} umgesetzt. Abbildung~\ref{fig:ihk_architektur} fasst die technische Architektur und die Trennung zwischen Benutzeroberfläche, Agent Runtime, Session State, Modellzugriff sowie den angebundenen Diensten zusammen \cite[S.~9--12]{sommer2026projekt}.
 
 \begin{figure}[htbp]
     \centering
@@ -416,26 +415,26 @@ Das MVP wurde als Single-Agent-Anwendung mit dem Google Agent Development Kit um
         height=0.36\textheight,
         keepaspectratio
     ]{images/architekturvergleich}
-    \caption{Technische Architektur des im IHK-Praxisprojekt entwickelten Wissenssicherungsagenten (eigene Darstellung)}
+    \caption{Technische Architektur des im \acrshort{ihk}-Praxisprojekt entwickelten Wissenssicherungsagenten (eigene Darstellung)}
     \label{fig:ihk_architektur}
 \end{figure}
 
-Die nutzende Person interagiert über die ADK Web UI, Gemini~2.5~Pro wird über Vertex~AI für Dialog und sprachliche Verdichtung genutzt. Die vorbereiteten Fragen und ergänzende Kontextdokumente werden über die Discovery Engine bereitgestellt. Während des Interviews speichert die Anwendung Frage, Rohantwort, Kurzfassung, Kategorie und Keyword im Session State. Nach Abschluss werden ein Transkript, ein Ergebnisdokument für allgemeines rollenbezogenes Wissen und für jedes angegebene Thema ein separates projektspezifisches DOCX-Dokument erzeugt. Die Kurzfassungen werden auf zwei bis vier Sätze begrenzt und sollen keine neuen Informationen, Kategorien oder Keywords erzeugen \cite[S.~9--12]{sommer2026projekt}.
+Die nutzende Person interagiert über die \gls{adk} Web UI, Gemini~2.5~Pro wird über Vertex~AI für Dialog und sprachliche Verdichtung genutzt. Die vorbereiteten Fragen und ergänzende Kontextdokumente werden über die Discovery Engine bereitgestellt. Während des Interviews speichert die Anwendung Frage, Rohantwort, Kurzfassung, Kategorie und Keyword im Session State. Nach Abschluss werden ein Transkript, ein Ergebnisdokument für allgemeines rollenbezogenes Wissen und für jedes angegebene Thema ein separates projektspezifisches DOCX-Dokument erzeugt. Die Kurzfassungen werden auf zwei bis vier Sätze begrenzt und sollen keine neuen Informationen, Kategorien oder Keywords erzeugen \cite[S.~9--12]{sommer2026projekt}.
 
-Für die Interpretation der PVA ist die Abgrenzung des MVP wesentlich. Nicht Bestandteil des IHK-Projekts waren eine Produktivsetzung, die automatische Ablage der Ergebnisdateien, eine Sprachschnittstelle, eine vollständige inhaltliche Konsistenzprüfung der Nutzendeneingaben und dynamische Rückfragen zur Klärung widersprüchlicher Angaben \cite[S.~2,~5]{sommer2026projekt}. Die PVA bewertet daher kein autonomes Wissensmanagementsystem, sondern ein prototypisches Artefakt, das den Interviewablauf und die strukturierte Aufbereitung unterstützt.
+Für die Interpretation der \gls{pva} ist die Abgrenzung des \gls{mvp} wesentlich. Nicht Bestandteil des \acrshort{ihk}-Projekts waren eine Produktivsetzung, die automatische Ablage der Ergebnisdateien, eine Sprachschnittstelle, eine vollständige inhaltliche Konsistenzprüfung der Nutzendeneingaben und dynamische Rückfragen zur Klärung widersprüchlicher Angaben \cite[S.~2,~5]{sommer2026projekt}. Die PVA bewertet daher kein autonomes Wissensmanagementsystem, sondern ein prototypisches Artefakt, das den Interviewablauf und die strukturierte Aufbereitung unterstützt.
 
-Die IHK-Projektdokumentation wird in dieser Arbeit als unveröffentlichte Primärquelle für Funktionsumfang, Testartefakte und Prozessannahmen zitiert. Sie wird aufgrund ihres Umfangs nicht vollständig im Anhang reproduziert. Stattdessen ist die IHK-Projektdokumentation im Abgabenportal der BHH hochgeladen und der Anhang der PVA enthält die für die Evaluation unmittelbar benötigten Daten und Ableitungen, insbesondere Referenzstandard, Codierung und synthetische Testdefinitionen.
+Die \acrshort{ihk}-Projektdokumentation wird in dieser Arbeit als unveröffentlichte Primärquelle für Funktionsumfang, Testartefakte und Prozessannahmen zitiert. Sie wird aufgrund ihres Umfangs nicht vollständig im Anhang reproduziert. Stattdessen ist die IHK-Projektdokumentation im Abgabenportal der \glslink{bhh}{Beruflichen Hochschule Hamburg (BHH)}\glsunset{bhh} hochgeladen und der Anhang der \gls{pva} enthält die für die Evaluation unmittelbar benötigten Daten und Ableitungen, insbesondere Referenzstandard, Codierung und synthetische Testdefinitionen.
 
 \subsection{Ziel der Praxisvalidierungsarbeit und Forschungsfrage}
 
-Die ursprüngliche Test- und Abnahmephase überprüfte vor allem die funktionalen Must-have-An\-forderungen des MVP. Insgesamt wurden vier lokale Agentendurchläufe mit vergleichbaren Rahmenbedingungen durchgeführt. Im IHK-Bericht sind zwei vollständige projektspezifische Ergebnisdateien dokumentiert \cite[S.~13]{sommer2026projekt}. Die vorliegende PVA untersucht diese beiden vollständig nachvollziehbaren Ergebnisartefakte nachträglich feingranular. Damit verschiebt sich der Schwerpunkt von der Frage, ob der Agent technisch funktioniert, auf die Frage, wie zuverlässig die von ihm erzeugte Wissensdokumentation ist.
+Die ursprüngliche Test- und Abnahmephase überprüfte vor allem die funktionalen Must-have-An\-forderungen des \gls{mvp}. Insgesamt wurden vier lokale Agentendurchläufe mit vergleichbaren Rahmenbedingungen durchgeführt. Im \acrshort{ihk}-Bericht sind zwei vollständige projektspezifische Ergebnisdateien dokumentiert \cite[S.~13]{sommer2026projekt}. Die vorliegende \gls{pva} untersucht diese beiden vollständig nachvollziehbaren Ergebnisartefakte nachträglich feingranular. Damit verschiebt sich der Schwerpunkt von der Frage, ob der Agent technisch funktioniert, auf die Frage, wie zuverlässig die von ihm erzeugte Wissensdokumentation ist.
 
 Die Untersuchung trennt zwei Ziele. Erstens werden die zwei tatsächlich im Praxisprojekt erzeugten Ergebnisdateien desselben Interviewfalls empirisch gegen einen Referenzstandard geprüft. Zweitens wird das entwickelte Bewertungsverfahren mit synthetischen Vollinterviews, gezielt manipulierten Ausgabebeispielen und isolierten Grenzfällen methodisch erprobt. Die synthetischen Daten dienen ausdrücklich nicht als Leistungsnachweis des implementierten Agenten, sondern prüfen, ob Codierregeln und Testkriterien typische Fehlerarten eindeutig erfassen können.
 
 Die zentrale Forschungsfrage lautet:
 
 \begin{quote}
-\textbf{Inwieweit reduziert der entwickelte KI-Agent im dokumentierten Anwendungsfall den Bearbeitungsaufwand, ohne Vollständigkeit, Faktentreue, Strukturkonformität und Laufstabilität der Wissensdokumentation wesentlich zu beeinträchtigen?}
+\textbf{Inwieweit reduziert der entwickelte \gls{ki}-Agent im dokumentierten Anwendungsfall den Bearbeitungsaufwand, ohne Vollständigkeit, Faktentreue, Strukturkonformität und Laufstabilität der Wissensdokumentation wesentlich zu beeinträchtigen?}
 \end{quote}
 
 Daraus werden vier fallbezogene Hypothesen abgeleitet:
@@ -466,19 +465,19 @@ Min et al. führen mit FActScore ein Verfahren ein, das längere Sprachmodellaus
 
 Die Begriffe werden im Folgenden eindeutig getrennt. \emph{Faktentreue} bezeichnet die Übereinstimmung einer Aussage mit der zugrunde liegenden Interviewantwort. \emph{Laufstabilität} bezeichnet dagegen die fachliche Gleichwertigkeit mehrerer Ausgaben bei identischer Eingabe. Der in SummEval verwendete Begriff \emph{consistency} wird daher nicht für den Vergleich der Wiederholungsläufe übernommen.
 Komplexere Informationskontexte erhöhen die Bedeutung einer feingranularen Prüfung. Belém et al. zeigen für Mehrdokument-Zusammenfassungen, dass mehrere Dokumente sowie wiederholte oder diverse Informationen Halluzinationen und generische, nicht ausreichend belegte Aussagen begünstigen können \cite[S.~5292--5293]{belem2025}.
-Liu et al. untersuchen ein Verfahren zur Erkennung und nachgelagerten Korrektur von Halluzinationen in LLM-basierten Zusammenfassungen. Solche Verfahren können die Faktentreue verbessern, ersetzen im betrieblichen Kontext aber nicht automatisch eine fachliche Freigabe \cite[S.~1]{liu2026}.
+Liu et al. untersuchen ein Verfahren zur Erkennung und nachgelagerten Korrektur von Halluzinationen in \gls{llm}-basierten Zusammenfassungen. Solche Verfahren können die Faktentreue verbessern, ersetzen im betrieblichen Kontext aber nicht automatisch eine fachliche Freigabe \cite[S.~1]{liu2026}.
 
 \subsection{Sicherheit und menschliche Kontrolle}
 
-Für sensible betriebliche Wissensdokumente reicht eine reine Inhaltsmetrik nicht aus. Das NIST-Profil für generative KI fordert eine risikobasierte Betrachtung über Entwicklung, Einsatz, Überwachung und Bewertung hinweg \cite{nist2024genai}. Die OWASP-Risiken für LLM-Anwendungen benennen insbesondere Prompt-Injection und die Offenlegung sensibler Informationen als eigenständige Gefährdungen \cite{owasp2025llm}. Diese Grundlagen motivieren separate Testfälle für eingebettete Anweisungen, personenbezogene Angaben und Geheimnisse.
+Für sensible betriebliche Wissensdokumente reicht eine reine Inhaltsmetrik nicht aus. Das Profil des \gls{nist} für generative \gls{ki} fordert eine risikobasierte Betrachtung über Entwicklung, Einsatz, Überwachung und Bewertung hinweg \cite{nist2024genai}. Die vom \gls{owasp} benannten Risiken für \acrshort{llm}-Anwendungen benennen insbesondere Prompt-Injection und die Offenlegung sensibler Informationen als eigenständige Gefährdungen \cite{owasp2025llm}. Diese Grundlagen motivieren separate Testfälle für eingebettete Anweisungen, personenbezogene Angaben und Geheimnisse.
 
-Eine vollständig automatisierte Zweitbewertung durch ein weiteres Sprachmodell wird nicht als alleinige Absicherung verwendet. Gu et al. zeigen in ihrer Übersicht zu LLM-as-a-Judge zwar Skalierungsvorteile, zugleich aber Verzerrungen, Instabilität und Anforderungen an die Validierung des bewertenden Modells \cite[S.~1--2]{gu2026}. Für den vorliegenden kleinen Korpus ist eine manuelle, regelgebundene Codierung transparenter.
+Eine vollständig automatisierte Zweitbewertung durch ein weiteres Sprachmodell wird nicht als alleinige Absicherung verwendet. Gu et al. zeigen in ihrer Übersicht zu \acrshort{llm}-as-a-Judge zwar Skalierungsvorteile, zugleich aber Verzerrungen, Instabilität und Anforderungen an die Validierung des bewertenden Modells \cite[S.~1--2]{gu2026}. Für den vorliegenden kleinen Korpus ist eine manuelle, regelgebundene Codierung transparenter.
 
 \section{Untersuchungsdesign und Datenstatus}
 
 \subsection{Empirischer Kern}
 
-Der empirische Kern besteht aus dem im IHK-Projekt dokumentierten Interviewanwendungsfall zum LMLV-Toolingservice. Die damalige Testphase umfasste vier lokale End-to-End-Durchläufe. Für die PVA werden jedoch ausschließlich die zwei im Projektbericht vollständig dokumentierten projektspezifischen Ergebnisdateien herangezogen. Damit ist die Datengrundlage für die Nachbewertung eindeutig nachvollziehbar und wird nicht durch nachträglich rekonstruierte Agentenausgaben erweitert \cite[S.~13]{sommer2026projekt}.
+Der empirische Kern besteht aus dem im \acrshort{ihk}-Projekt dokumentierten Interviewanwendungsfall zum LMLV-Toolingservice. Die damalige Testphase umfasste vier lokale End-to-End-Durchläufe. Für die \gls{pva} werden jedoch ausschließlich die zwei im Projektbericht vollständig dokumentierten projektspezifischen Ergebnisdateien herangezogen. Damit ist die Datengrundlage für die Nachbewertung eindeutig nachvollziehbar und wird nicht durch nachträglich rekonstruierte Agentenausgaben erweitert \cite[S.~13]{sommer2026projekt}.
 
 Der projektspezifische Interviewteil umfasst 13 Fragen. Aus den zugehörigen dokumentierten Rohantworten wurde retrospektiv ein Referenzstandard mit 35 atomaren Fakten konstruiert. Beispiele sind benannte Ansprechpartner, eine Negation wie „keine externen Stakeholder“, konkrete Dokumentationsorte oder die Kausalbeziehung zwischen falschen Annahmen und fehlerhaftem Code. Der vollständige Referenzstandard ist in Anhang~\ref{anhang_referenzkatalog} dokumentiert. Die beiden Ergebnisdateien werden unabhängig voneinander gegen denselben Referenzstandard geprüft. Dadurch lassen sich Faktendeckung, unbelegte Ergänzungen, Strukturkonformität und Unterschiede zwischen den Durchläufen bestimmen. Wegen des einzelnen fachlichen Falls handelt es sich um eine formative Einzelfallevaluation, nicht um einen allgemeinen Wirksamkeitsnachweis.
 
@@ -599,7 +598,7 @@ Die synthetischen Vollinterviews werden nicht mit den realen Agentenergebnissen 
 
 Ergänzend definiert der Robustheitskatalog zwölf gezielte Grenzfälle. Inhaltliche Fälle prüfen unter anderem sehr kurze oder umgangssprachliche Antworten, Negationen, Kausalbeziehungen, Widersprüche und vermischte Projekte. Schutzfälle adressieren personenbezogene Angaben, indirekte Prompt-Injection und Geheimnisse. Kontextfälle prüfen sehr lange Antworten sowie mehrdeutige Abkürzungen. Die vollständigen Eingaben, Abnahmekriterien und Wiederholungsregeln sind in Anhang~\ref{anhang_robustheit} dokumentiert. Besonders bei Schutzfällen gilt ein strenges Kriterium: Bereits eine einzige Offenlegung oder unzulässige Übernahme wäre als kritischer Fehler zu werten \cite{nist2024genai,owasp2025llm}.
 
-Für eine spätere Ausführung sind pro Fall drei Wiederholungen unter dokumentierter Modell-, Prompt- und Fragenkatalogversion vorgesehen. Ein zweites Sprachmodell kann perspektivisch als Hinweisgeber dienen, die Bewertung schwerer oder kritischer Fälle sollte wegen bekannter Bias- und Stabilitätsprobleme von LLM-as-a-Judge jedoch fachlich kontrolliert bleiben \cite[S.~1--2]{gu2026}. Die detaillierte Testspezifikation dient damit zugleich als Regressionstest für spätere Änderungen am Agenten.
+Für eine spätere Ausführung sind pro Fall drei Wiederholungen unter dokumentierter Modell-, Prompt- und Fragenkatalogversion vorgesehen. Ein zweites Sprachmodell kann perspektivisch als Hinweisgeber dienen, die Bewertung schwerer oder kritischer Fälle sollte wegen bekannter Bias- und Stabilitätsprobleme von \acrshort{llm}-as-a-Judge jedoch fachlich kontrolliert bleiben \cite[S.~1--2]{gu2026}. Die detaillierte Testspezifikation dient damit zugleich als Regressionstest für spätere Änderungen am Agenten.
 
 \section{Aufwandsanalyse und Validitätsgrenzen}
 
@@ -757,7 +756,7 @@ R13 & 4 & 4 & 0 & 4 & Negation, Quellenart und Technologien erhalten\\
 \subsection{Synthetische Vollinterviews zur Methodenvalidierung}
 \label{anhang_synth_interviews}
 
-Die folgenden Fälle sind vollständig synthetische Testdaten. Weder die Rohantworten noch die manipulierten Ausgabefassungen stammen von realen Beschäftigten oder aus tatsächlichen Agentenläufen. Die Fälle wurden ausschließlich konstruiert, um die Atomisierung, die Codierregeln und die Schwereklassifikation an bekannten Fehlerbildern nachvollziehbar zu erproben. Die Interviewfragen orientieren sich an den 13 Kategorien des projektspezifischen Fragenkatalogs des IHK-Praxisprojekts.
+Die folgenden Fälle sind vollständig synthetische Testdaten. Weder die Rohantworten noch die manipulierten Ausgabefassungen stammen von realen Beschäftigten oder aus tatsächlichen Agentenläufen. Die Fälle wurden ausschließlich konstruiert, um die Atomisierung, die Codierregeln und die Schwereklassifikation an bekannten Fehlerbildern nachvollziehbar zu erproben. Die Interviewfragen orientieren sich an den 13 Kategorien des projektspezifischen Fragenkatalogs des \acrshort{ihk}-Praxisprojekts.
 
 \begin{table}[H]
 \centering
